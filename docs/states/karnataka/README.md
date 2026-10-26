@@ -81,8 +81,8 @@ What "confidence" means, so you know how much to trust a given rate:
 | Sheshagirihalli Toll Plaza | 275 | Near Kengeri Kaniminke Toll Plaza Km 23.900 26.800 | [12.840393417724071, 77.41831598915633](https://www.google.com/maps?q=12.840393417724071,77.41831598915633) | 180 | complete |
 | Kaniminike Toll Plaza | 275 | Sameerapalem(V), Voletivaripalem (M), SPSR Nellore District | [12.8596555, 77.4311167](https://www.google.com/maps?q=12.8596555,77.4311167) | 180 | complete |
 | Rampura Toll Plaza (NH-548 B) | 548B | PALUVAYI (Km 17+800) | [16.823268, 75.473624](https://www.google.com/maps?q=16.823268,75.473624) | 90 | complete |
-| Hulikunte | 648 | KM 20+000 | [13.27084, 77.34821](https://www.google.com/maps?q=13.27084,77.34821) | 110 | complete |
 | Nalluru Devanahalli Toll Plaza | 648 | KM 20+000 | [13.20745569, 77.76247749](https://www.google.com/maps?q=13.20745569,77.76247749) | 85 | complete |
+| Hulikunte | 648 | KM 20+000 | [13.27084, 77.34821](https://www.google.com/maps?q=13.27084,77.34821) | 110 | complete |
 | Kannegala Toll Plaza | 766 | At km 144.130 | [11.78008, 76.61368](https://www.google.com/maps?q=11.78008,76.61368) | 35 | complete |
 | K N Huindy | 766 | km 200.400 | [12.21316507, 76.66257327](https://www.google.com/maps?q=12.21316507,76.66257327) | 60 | complete |
 | Yeddore | 766 | km 236.550 | [12.2437, 76.88332](https://www.google.com/maps?q=12.2437,76.88332) | 45 | complete |

@@ -32,7 +32,7 @@ The dataset is free and open. Grab it with a single HTTP request — no signup, 
 ## Coverage at a glance
 
 <!-- STATE_STATS:START -->
-**1,701 toll plazas** across **26 states/UTs** — dataset last updated 2026-10-26
+**1,701 toll plazas** across **25 states/UTs** — dataset last updated 2026-10-26
 <!-- STATE_STATS:END -->
 
 Browse individual state pages below, or jump straight to [docs/states/](docs/states/) for the full listing.
@@ -62,9 +62,8 @@ Browse individual state pages below, or jump straight to [docs/states/](docs/sta
 | [Rajasthan](docs/states/rajasthan/README.md) | 394 | 57 | 174c / 216p / 4v | 2026-10-26 | [Browse](docs/states/rajasthan/README.md) |
 | [Tamil Nadu](docs/states/tamil-nadu/README.md) | 107 | 40 | 84c / 23p | 2026-10-26 | [Browse](docs/states/tamil-nadu/README.md) |
 | [Telangana](docs/states/telangana/README.md) | 68 | 14 | 33c / 35p | 2026-10-26 | [Browse](docs/states/telangana/README.md) |
-| [Unspecified](docs/states/unspecified/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/unspecified/README.md) |
 | [Uttar Pradesh](docs/states/uttar-pradesh/README.md) | 139 | 56 | 139c | 2026-10-26 | [Browse](docs/states/uttar-pradesh/README.md) |
-| [Uttarakhand](docs/states/uttarakhand/README.md) | 28 | 8 | 13c / 15p | 2026-10-26 | [Browse](docs/states/uttarakhand/README.md) |
+| [Uttarakhand](docs/states/uttarakhand/README.md) | 29 | 8 | 14c / 15p | 2026-10-26 | [Browse](docs/states/uttarakhand/README.md) |
 | [West Bengal](docs/states/west-bengal/README.md) | 32 | 20 | 31c / 1p | 2026-10-26 | [Browse](docs/states/west-bengal/README.md) |
 <!-- STATE_TABLE:END -->
 

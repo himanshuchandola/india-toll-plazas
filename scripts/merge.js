@@ -103,7 +103,10 @@ function applyStateLabelOverrides(combined, overrides) {
     if (!cur || typeof cur.state_name !== 'string' || !cur.state_name.trim()) continue;
     const have = entry.state_name == null ? null : String(entry.state_name).trim();
     if (have === cur.state_name.trim()) { result.alreadyCorrect.push(key); continue; }
-    if (cur.expected_current_state != null && have !== String(cur.expected_current_state).trim()) {
+    // `expected_current_state` present (even as null = "must currently be empty") is a guard: apply only if it still matches.
+    const hasGuard = Object.prototype.hasOwnProperty.call(cur, 'expected_current_state');
+    const expectedGuard = cur.expected_current_state == null ? null : String(cur.expected_current_state).trim();
+    if (hasGuard && have !== expectedGuard) {
       result.skippedChanged.push({ key, current: have, expected: cur.expected_current_state });
       continue;
     }
@@ -112,6 +115,58 @@ function applyStateLabelOverrides(combined, overrides) {
   }
   for (const key of Object.keys(overrides)) if (!seen.has(key)) result.notFound.push(key);
   return result;
+}
+
+// ---- Mechanical text/label cleanups (deterministic; applied on every merge) ----------------------------------
+// NHAI's API returns HTML-escaped text ("L&amp;T", "&nbsp;") and a few spelling variants of state names. Fixing them
+// here (not in latest.json by hand) means every refresh gets the same result. nh_no, every rate field, identifiers,
+// coordinates and rate_* provenance are never touched.
+
+const HTML_ENTITIES = { '&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#39;': "'", '&apos;': "'", '&nbsp;': ' ', '&#160;': ' ' };
+const ENTITY_RE = /&(?:amp|lt|gt|quot|apos|nbsp|#39|#160);/g;
+const RATE_FIELD_RE = /^(car|lcv|bus|multiaxle|axle_4_6|axle_7_plus|hcm)_(single|return|monthly|commercial)$/;
+const PROTECTED_FIELDS = new Set(['nh_no', 'tollplaza_id', 'tollplaza_code', 'latitude', 'longitude']);
+
+/** Single pass on purpose: "&amp;amp;" becomes "&amp;", never "&". */
+function decodeHtmlEntities(value) {
+  return value.replace(ENTITY_RE, (m) => HTML_ENTITIES[m]);
+}
+
+function cleanTextFields(entry) {
+  const changed = [];
+  for (const [field, value] of Object.entries(entry)) {
+    if (typeof value !== 'string') continue;
+    if (PROTECTED_FIELDS.has(field) || field.startsWith('rate_') || RATE_FIELD_RE.test(field)) continue;
+    if (!value.includes('&')) continue;
+    const decoded = decodeHtmlEntities(value);
+    if (decoded !== value) { entry[field] = decoded; changed.push(field); }
+  }
+  return changed;
+}
+
+// Letters-only key -> canonical spelling. Only spelling variants of the same state; never merges different states.
+const STATE_SPELLING = {
+  ANDHRAPRADESH: 'ANDHRA PRADESH',
+  HIMACHALPRADESH: 'HIMACHAL PRADESH',
+  TAMILNADU: 'TAMIL NADU',
+  WESTBENGAL: 'WEST BENGAL',
+};
+
+function canonicalStateName(name) {
+  if (typeof name !== 'string') return name;
+  const key = name.toUpperCase().replace(/[^A-Z]/g, '');
+  return Object.prototype.hasOwnProperty.call(STATE_SPELLING, key) ? STATE_SPELLING[key] : name;
+}
+
+function applyCleanups(combined) {
+  let entityRecords = 0; let entityFields = 0; let stateRenamed = 0;
+  for (const entry of combined) {
+    const changed = cleanTextFields(entry);
+    if (changed.length) { entityRecords++; entityFields += changed.length; }
+    const canon = canonicalStateName(entry.state_name);
+    if (canon !== entry.state_name) { entry.state_name = canon; stateRenamed++; }
+  }
+  return { entityRecords, entityFields, stateRenamed };
 }
 
 async function mergeDataSources(options = {}) {
@@ -168,6 +223,10 @@ async function mergeDataSources(options = {}) {
       for (const k of r.skippedChanged) console.warn(`  state label override for ${k.key} skipped: upstream is now "${k.current}" (expected "${k.expected}") - review or remove the override`);
       for (const k of r.alreadyCorrect) console.warn(`  state label override for ${k} is now redundant (upstream already correct) - can be removed`);
     }
+
+    // Deterministic cleanups: HTML entities in text fields and state-name spelling variants (never nh_no or rates).
+    const cleanup = applyCleanups(combined);
+    console.log(`Cleanups: decoded HTML entities in ${cleanup.entityFields} field(s) across ${cleanup.entityRecords} record(s); canonicalised ${cleanup.stateRenamed} state name spelling(s)`);
 
     // Sort by state, then by location (KM marker)
     combined.sort((a, b) => {
@@ -237,4 +296,7 @@ module.exports = mergeDataSources;
 module.exports.mergeDataSources = mergeDataSources;
 module.exports.applyCuratedRates = applyCuratedRates;
 module.exports.applyStateLabelOverrides = applyStateLabelOverrides;
+module.exports.applyCleanups = applyCleanups;
+module.exports.decodeHtmlEntities = decodeHtmlEntities;
+module.exports.canonicalStateName = canonicalStateName;
 module.exports.loadStateLabelOverrides = loadStateLabelOverrides;

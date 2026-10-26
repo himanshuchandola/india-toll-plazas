@@ -1,8 +1,8 @@
 # Toll plazas in Uttarakhand — India
 
-Browse **28 FASTag toll plazas** across 8 national highways in Uttarakhand. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **29 FASTag toll plazas** across 8 national highways in Uttarakhand. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 13 complete, 15 partial · **Last updated:** 2026-10-26
+**Coverage:** 14 complete, 15 partial · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,11 +17,12 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 13 | 46.4% |
-| partial | 15 | 53.6% |
+| complete | 14 | 48.3% |
+| partial | 15 | 51.7% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
+| Shahpur Kalyanpur | 7 | 187 | [30.412142, 77.711422](https://www.google.com/maps?q=30.412142,77.711422) | 90 | complete |
 | Lacchiwala | 7 | Lacchhiwala | [30.209841, 78.125409](https://www.google.com/maps?q=30.209841,78.125409) | 105 | complete |
 | Jagatpur Patti | 74 | Ch. 145.054 | [29.244179, 78.884934](https://www.google.com/maps?q=29.244179,78.884934) | 120 | complete |
 | Deoria | 74 | Km 222.270 | [28.930785, 79.475734](https://www.google.com/maps?q=28.930785,79.475734) | 130 | complete |

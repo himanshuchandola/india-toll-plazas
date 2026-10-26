@@ -56,3 +56,73 @@ test('a malformed state_labels.json is skipped without breaking the merge', asyn
   assert.equal(combined[0].state_name, 'A');
   fs.rmSync(root, { recursive: true, force: true });
 });
+
+// ---- cleanups: HTML entities and state-name spelling ----
+const { decodeHtmlEntities, canonicalStateName, applyCleanups } = require('../scripts/merge');
+
+test('decodeHtmlEntities decodes the known entities in a single pass and leaves everything else alone', () => {
+  assert.equal(decodeHtmlEntities('L&amp;T Western'), 'L&T Western');
+  assert.equal(decodeHtmlEntities('a&nbsp;b&#160;c'), 'a b c');
+  assert.equal(decodeHtmlEntities('it&#39;s &quot;x&quot; &lt;y&gt;'), `it's "x" <y>`);
+  assert.equal(decodeHtmlEntities('&amp;amp;'), '&amp;'); // single pass: never double-decodes
+  assert.equal(decodeHtmlEntities('already & fine; &unknown; &#12345;'), 'already & fine; &unknown; &#12345;');
+});
+
+test('applyCleanups decodes text fields but never touches nh_no, rates, identifiers, coordinates or rate_* provenance', () => {
+  const entry = {
+    tollplaza_id: 1, tollplaza_code: 'A&amp;B', latitude: '1&amp;', longitude: '2&amp;',
+    nh_no: '21(New 205 &amp; 154) ', car_single: '5&amp;', lcv_return: '7&nbsp;',
+    rate_source: 'https://x.invalid/?a=1&amp;b=2', rate_valid_until: '2030&amp;',
+    contractor_name: 'M/s L&amp;T Ltd', chainage: 'A&nbsp;B', helpline_patrol: '1&amp;2', count: 3, nothing: null,
+  };
+  const out = applyCleanups([entry]);
+  assert.equal(entry.contractor_name, 'M/s L&T Ltd');
+  assert.equal(entry.chainage, 'A B');
+  assert.equal(entry.helpline_patrol, '1&2');
+  for (const k of ['tollplaza_code', 'latitude', 'longitude', 'nh_no', 'car_single', 'lcv_return', 'rate_source', 'rate_valid_until']) {
+    assert.ok(String(entry[k]).includes('&'), `${k} must be untouched`);
+  }
+  assert.equal(entry.nh_no, '21(New 205 &amp; 154) ');
+  assert.equal(entry.count, 3);
+  assert.deepEqual(out, { entityRecords: 1, entityFields: 3, stateRenamed: 0 });
+});
+
+test('canonicalStateName fixes only the four known spelling variants and is null-safe', () => {
+  assert.equal(canonicalStateName('TAMILNADU'), 'TAMIL NADU');
+  assert.equal(canonicalStateName('ANDHRAPRADESH'), 'ANDHRA PRADESH');
+  assert.equal(canonicalStateName('HIMACHALPRADESH'), 'HIMACHAL PRADESH');
+  assert.equal(canonicalStateName('WESTBENGAL'), 'WEST BENGAL');
+  assert.equal(canonicalStateName('TAMIL NADU'), 'TAMIL NADU');
+  for (const keep of ['PUNJAB AND HARYANA', 'JAMMU AND KASHMIR', 'UTTAR PRADESH', 'DELHI']) assert.equal(canonicalStateName(keep), keep);
+  assert.equal(canonicalStateName(null), null);
+  const rows = [{ state_name: 'TAMILNADU' }, { state_name: 'TAMIL NADU' }, { state_name: null }];
+  assert.equal(applyCleanups(rows).stateRenamed, 1);
+  assert.deepEqual(rows.map((r) => r.state_name), ['TAMIL NADU', 'TAMIL NADU', null]);
+});
+
+test('a state label override with expected_current_state:null applies only while the upstream value is empty', () => {
+  const empty = [P(1, null)];
+  const filled = [P(2, 'KARNATAKA')];
+  const ov = { 'id:1': { state_name: 'UTTARAKHAND', expected_current_state: null }, 'id:2': { state_name: 'UTTARAKHAND', expected_current_state: null } };
+  const r1 = applyStateLabelOverrides(empty, { 'id:1': ov['id:1'] });
+  const r2 = applyStateLabelOverrides(filled, { 'id:2': ov['id:2'] });
+  assert.deepEqual(r1.applied, ['id:1']);
+  assert.equal(empty[0].state_name, 'UTTARAKHAND');
+  assert.deepEqual(r2.skippedChanged.map((x) => x.key), ['id:2']);
+  assert.equal(filled[0].state_name, 'KARNATAKA'); // an upstream value is never clobbered
+});
+
+test('mergeDataSources runs the cleanups end to end and leaves rates and nh_no byte-identical', async () => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'cleanups-'));
+  const sourcesDir = path.join(root, 'sources');
+  fs.mkdirSync(sourcesDir, { recursive: true });
+  fs.writeFileSync(path.join(sourcesDir, 'nhai.json'), JSON.stringify([
+    P(1, 'TAMILNADU', { nh_no: '30 &amp; 34', car_single: '45', contractor_name: 'L&amp;T' }),
+  ]));
+  const [r] = await mergeDataSources({ sourcesDir, dataDir: root });
+  assert.equal(r.state_name, 'TAMIL NADU');
+  assert.equal(r.contractor_name, 'L&T');
+  assert.equal(r.nh_no, '30 &amp; 34');
+  assert.equal(r.car_single, '45');
+  fs.rmSync(root, { recursive: true, force: true });
+});

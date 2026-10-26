@@ -29,10 +29,10 @@ What "confidence" means, so you know how much to trust a given rate:
 | Mandawara ( Close Loop Toll ) | NE- 4 | 184.02 | [25.38196, 76.198655](https://www.google.com/maps?q=25.38196,76.198655) | 0 | complete |
 | Gopalpura (Close Loop Toll ) | NE- 4 | 184.02 | [24.906415, 75.958988](https://www.google.com/maps?q=24.906415,75.958988) | 0 | complete |
 | Karadiya ( Close Loop Toll ) | NE- 4 | 184.02 | [25.16616, 76.086059](https://www.google.com/maps?q=25.16616,76.086059) | 0 | complete |
-| Balapura ( Close Loop Toll) | NE- 4 | 184.02 | [25.061568, 76.038416](https://www.google.com/maps?q=25.061568,76.038416) | 0 | complete |
-| Laban ( Close Loop Toll ) | NE- 4 | 184.02 | [25.578171, 76.220970](https://www.google.com/maps?q=25.578171,76.220970) | 0 | complete |
 | Zalimpura (Close Loop Toll ) | NE- 4 | 184.02 | [25.273466, 76.142686](https://www.google.com/maps?q=25.273466,76.142686) | 0 | complete |
 | Chechat (Entry Exit ) Toll Plaza   | NE- 4 | 184.02 | [24.759444, 75.908694](https://www.google.com/maps?q=24.759444,75.908694) | 0 | complete |
+| Balapura ( Close Loop Toll) | NE- 4 | 184.02 | [25.061568, 76.038416](https://www.google.com/maps?q=25.061568,76.038416) | 0 | complete |
+| Laban ( Close Loop Toll ) | NE- 4 | 184.02 | [25.578171, 76.220970](https://www.google.com/maps?q=25.578171,76.220970) | 0 | complete |
 | Bhandaraj (Entry Exit )Toll | NE- 4 | At Ch. 182.000 | [26.9122222, 76.4294444](https://www.google.com/maps?q=26.9122222,76.4294444) | 0 | complete |
 | Dungarpur (Entry Exit ) Toll | NE- 4 | At Ch. 210.972 | [26.6663888, 76.3191667](https://www.google.com/maps?q=26.6663888,76.3191667) | 0 | complete |
 | Bonli (Close Loop Toll ) | NE- 4 | Hauj fee plaza at Km.237.765 at sultanpur-Varansi section design km.209.320 to km.272.590 | [26.333262172107283, 76.24529151966289](https://www.google.com/maps?q=26.333262172107283,76.24529151966289) |  | complete |
