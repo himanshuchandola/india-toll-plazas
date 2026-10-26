@@ -169,6 +169,42 @@ function applyCleanups(combined) {
   return { entityRecords, entityFields, stateRenamed };
 }
 
+// ---- Plaza category (non-default only) -----------------------------------------------------------------------
+// `plaza_category` marks points that are not ordinary highway tolls. Present only on those plazas; absent means
+// "highway_toll". Guarded: it applies only while the record has no category yet, so an upstream value is never
+// overwritten, and only the two non-default categories below may be written.
+const NON_DEFAULT_CATEGORIES = new Set(['checkpost_entry_fee', 'border_checkpost']);
+
+function loadPlazaCategoryOverrides(sourcesDir) {
+  const file = path.join(sourcesDir, 'curated', 'plaza_categories.json');
+  if (!fs.existsSync(file)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8')).plazas || {};
+  } catch (err) {
+    console.warn(`Skipping malformed curated plaza_categories.json: ${err.message}`);
+    return {};
+  }
+}
+
+function applyPlazaCategories(combined, overrides) {
+  const result = { applied: [], alreadyCategorised: [], skippedChanged: [], invalid: [], notFound: [] };
+  const seen = new Set();
+  for (const entry of combined) {
+    const key = [`code:${entry.tollplaza_code}`, `id:${entry.tollplaza_id}`].find((k) => Object.prototype.hasOwnProperty.call(overrides, k));
+    if (!key) continue;
+    seen.add(key);
+    const cur = overrides[key];
+    if (!cur || !NON_DEFAULT_CATEGORIES.has(cur.plaza_category)) { result.invalid.push(key); continue; }
+    const have = entry.plaza_category == null || entry.plaza_category === '' ? null : String(entry.plaza_category);
+    if (have === cur.plaza_category) { result.alreadyCategorised.push(key); continue; }
+    if (have !== null) { result.skippedChanged.push({ key, current: have, wanted: cur.plaza_category }); continue; }
+    entry.plaza_category = cur.plaza_category;
+    result.applied.push(key);
+  }
+  for (const key of Object.keys(overrides)) if (!seen.has(key)) result.notFound.push(key);
+  return result;
+}
+
 async function mergeDataSources(options = {}) {
   const maxDropRatio = options.maxDropRatio ?? 0.15;
   try {
@@ -222,6 +258,15 @@ async function mergeDataSources(options = {}) {
       console.log(`State label corrections: ${r.applied.length} applied, ${r.alreadyCorrect.length} already correct upstream, ${r.skippedChanged.length} skipped (upstream value changed), ${r.notFound.length} not found`);
       for (const k of r.skippedChanged) console.warn(`  state label override for ${k.key} skipped: upstream is now "${k.current}" (expected "${k.expected}") - review or remove the override`);
       for (const k of r.alreadyCorrect) console.warn(`  state label override for ${k} is now redundant (upstream already correct) - can be removed`);
+    }
+
+    // Plaza category for entry-fee / border checkposts (field only on non-default plazas; absent = highway_toll).
+    const categoryOverrides = loadPlazaCategoryOverrides(sourcesDir);
+    if (Object.keys(categoryOverrides).length > 0) {
+      const r = applyPlazaCategories(combined, categoryOverrides);
+      console.log(`Plaza categories: ${r.applied.length} applied, ${r.alreadyCategorised.length} already set upstream, ${r.skippedChanged.length} skipped (upstream category differs), ${r.invalid.length} invalid, ${r.notFound.length} not found`);
+      for (const k of r.skippedChanged) console.warn(`  plaza category override for ${k.key} skipped: upstream has "${k.current}", override wants "${k.wanted}"`);
+      for (const k of r.invalid) console.warn(`  plaza category override for ${k} ignored: category must be one of ${[...NON_DEFAULT_CATEGORIES].join(', ')}`);
     }
 
     // Deterministic cleanups: HTML entities in text fields and state-name spelling variants (never nh_no or rates).
@@ -297,6 +342,8 @@ module.exports.mergeDataSources = mergeDataSources;
 module.exports.applyCuratedRates = applyCuratedRates;
 module.exports.applyStateLabelOverrides = applyStateLabelOverrides;
 module.exports.applyCleanups = applyCleanups;
+module.exports.applyPlazaCategories = applyPlazaCategories;
+module.exports.loadPlazaCategoryOverrides = loadPlazaCategoryOverrides;
 module.exports.decodeHtmlEntities = decodeHtmlEntities;
 module.exports.canonicalStateName = canonicalStateName;
 module.exports.loadStateLabelOverrides = loadStateLabelOverrides;

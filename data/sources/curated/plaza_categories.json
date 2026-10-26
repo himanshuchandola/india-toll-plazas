@@ -1,0 +1,329 @@
+{
+  "_comment": "Hand-curated plaza_category for points that are NOT ordinary highway tolls: forest / tiger-reserve / environment entry-fee checkposts (checkpost_entry_fee) and state border check posts (border_checkpost). The field is present only on these plazas; absent means highway_toll. Applied by merge.js, only while the record has no category yet (expected_current_category null), so an upstream value is never overwritten. Consumers should not add these to a highway-toll total. Not yet confirmed against official sources. 15 Uttarakhand \"Checkpost\" plazas were deliberately NOT classified (ids 3414, 3421-3434): two carry route-derived road tolls and need verification.",
+  "allowed_categories": [
+    "checkpost_entry_fee",
+    "border_checkpost"
+  ],
+  "plazas": {
+    "id:3773": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Achhad BorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3774": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "HadakhedBorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3775": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "NavapurBorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3776": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Kagal CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3777": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Deori BorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3778": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Omerga BorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3779": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "MandrupBorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3780": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "PimpalkuttiBorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3781": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Ramtek BorderCheckpost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3782": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "MarawadeCheck Post Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3783": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Saoner CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3784": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Purnad CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3785": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Borgaon CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3786": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Rajura CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3787": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Biloli CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3788": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Kharpi CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3789": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "AkkalkuvaCheck Post Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3790": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Shinoli CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3791": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Warud CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3792": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Kelwad CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3793": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Chorwad CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3794": {
+      "plaza_category": "border_checkpost",
+      "expected_current_category": null,
+      "plaza_name": "Degloor CheckPost Toll Plaza",
+      "confidence": "high",
+      "evidence": "Maharashtra Border Check Post (operator MBCPNL); names say \"Border Checkpost\"/\"CheckPost\"; repo note already states: no highway toll for typical car/LMV through-movement.",
+      "confirmed_against_official_source": false
+    },
+    "id:3330": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Chinnar 9/6checkpost",
+      "confidence": "high",
+      "evidence": "Forest/tiger-reserve checkposts (Anamalai Tiger Reserve / Nilgiris forest); repo note already calls the Rs100 a \"car entry fee\", not a highway toll.",
+      "confirmed_against_official_source": false
+    },
+    "id:3345": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Kallar ForestCheck post",
+      "confidence": "high",
+      "evidence": "Forest/tiger-reserve checkposts (Anamalai Tiger Reserve / Nilgiris forest); repo note already calls the Rs100 a \"car entry fee\", not a highway toll.",
+      "confirmed_against_official_source": false
+    },
+    "id:3354": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "KunjapanaiCheck post",
+      "confidence": "high",
+      "evidence": "Forest/tiger-reserve checkposts (Anamalai Tiger Reserve / Nilgiris forest); repo note already calls the Rs100 a \"car entry fee\", not a highway toll.",
+      "confirmed_against_official_source": false
+    },
+    "id:3356": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Masinagudi",
+      "confidence": "high",
+      "evidence": "Forest/tiger-reserve checkposts (Anamalai Tiger Reserve / Nilgiris forest); repo note already calls the Rs100 a \"car entry fee\", not a highway toll.",
+      "confirmed_against_official_source": false
+    },
+    "id:4533": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Bettal Thanda Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4534": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Nellikal Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4535": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "FDO Complex Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4536": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Y JunctionKistempet Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4537": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "ParpalleChintha Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4538": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "ThapalpurCheck post Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4539": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "IndanpallyCheck post Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4540": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "PandavapurCheck post Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:4541": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Utnoor Checkpost Toll Plaza",
+      "confidence": "medium",
+      "evidence": "Operators are Telangana Forest Department / Chennur Forest Division / Kawal Tiger Reserve (checkpost names). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:3119": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "NagarjunasagarEMC Checkpost",
+      "confidence": "medium",
+      "evidence": "Operator Project Tiger, Markapur; names say EMC / Forest Checkpost. EMC = Ecosystem Management Coordination fee at Nagarjunasagar-Srisailam Tiger Reserve (IHMCL MoU 2023). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:3120": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "EthipothalaEMC Checkpost",
+      "confidence": "medium",
+      "evidence": "Operator Project Tiger, Markapur; names say EMC / Forest Checkpost. EMC = Ecosystem Management Coordination fee at Nagarjunasagar-Srisailam Tiger Reserve (IHMCL MoU 2023). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:3121": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "Narajamalatanda EMC Checkpost",
+      "confidence": "medium",
+      "evidence": "Operator Project Tiger, Markapur; names say EMC / Forest Checkpost. EMC = Ecosystem Management Coordination fee at Nagarjunasagar-Srisailam Tiger Reserve (IHMCL MoU 2023). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:3122": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "SirigiripaduEMC Checkpost",
+      "confidence": "medium",
+      "evidence": "Operator Project Tiger, Markapur; names say EMC / Forest Checkpost. EMC = Ecosystem Management Coordination fee at Nagarjunasagar-Srisailam Tiger Reserve (IHMCL MoU 2023). No fee published.",
+      "confirmed_against_official_source": false
+    },
+    "id:3603": {
+      "plaza_category": "checkpost_entry_fee",
+      "expected_current_category": null,
+      "plaza_name": "GanpathiForestCheckPost",
+      "confidence": "medium",
+      "evidence": "Operator Project Tiger, Markapur; names say EMC / Forest Checkpost. EMC = Ecosystem Management Coordination fee at Nagarjunasagar-Srisailam Tiger Reserve (IHMCL MoU 2023). No fee published.",
+      "confirmed_against_official_source": false
+    }
+  }
+}

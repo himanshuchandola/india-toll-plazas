@@ -98,6 +98,20 @@ Complete documentation of all fields in the toll plaza dataset.
 | `toll_lanes` | String | "12" | Number of dedicated toll collection lanes |
 | `active` | Boolean | true | Whether the toll plaza is currently operational |
 
+### Plaza Category (optional)
+
+| Field | Type | Example | Description |
+|-------|------|---------|-------------|
+| `plaza_category` | String (optional) | "border_checkpost" | Present **only** on points that are not ordinary highway tolls. **Absent means `highway_toll`.** |
+
+Allowed values and meaning:
+
+- *(absent)* / `highway_toll`: an ordinary highway toll plaza. This is the default and is never written to the file.
+- `checkpost_entry_fee`: a forest, tiger-reserve or environment checkpost that collects an entry or eco fee, not a highway toll.
+- `border_checkpost`: a state border check post.
+
+Consumers that compute a route's highway toll should **not** add the rates of `checkpost_entry_fee` or `border_checkpost` points to the toll total; list them separately instead. The values come from hand-curated evidence in `data/sources/curated/plaza_categories.json`, applied by `scripts/merge.js` only while the record has no category yet, and are **not yet confirmed against official sources**. Plazas that look like checkposts but lack evidence (for example the Uttarakhand "Checkpost" plazas) are intentionally left unclassified.
+
 ### Operational Information
 
 | Field | Type | Example | Description |
