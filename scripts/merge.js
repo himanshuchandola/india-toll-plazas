@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { assertNotRegressed } = require('./lib/datasetGuard');
 
 /**
  * Apply a hand-curated authoritative rate correction to a plaza, in place.
@@ -75,11 +76,12 @@ function loadCuratedOverrides(sourcesDir) {
   return { plazas: merged, fileCount };
 }
 
-async function mergeDataSources() {
+async function mergeDataSources(options = {}) {
+  const maxDropRatio = options.maxDropRatio ?? 0.15;
   try {
     console.log('Merging data sources...');
 
-    const sourcesDir = path.join(__dirname, '../data/sources');
+    const sourcesDir = options.sourcesDir || path.join(__dirname, '../data/sources');
     const nhaiFile = path.join(sourcesDir, 'nhai.json');
     const stateHighwaysFile = path.join(sourcesDir, 'state_highways.json');
 
@@ -137,24 +139,46 @@ async function mergeDataSources() {
 
     console.log(`Combined dataset: ${combined.length} total toll plazas`);
 
+    if (combined.length === 0) {
+      throw new Error('Merged dataset is empty — refusing to overwrite latest.json');
+    }
+
     // Create data directory if it doesn't exist
-    const dataDir = path.join(__dirname, '../data');
+    const dataDir = options.dataDir || path.join(__dirname, '../data');
     if (!fs.existsSync(dataDir)) {
       fs.mkdirSync(dataDir, { recursive: true });
     }
 
     // Save merged data (minified only for size optimization)
     const latestFile = path.join(dataDir, 'latest.json');
-    
-    // Minified version for size optimization and direct API access
-    fs.writeFileSync(latestFile, JSON.stringify(combined));
+
+    let previousCount = 0;
+    if (fs.existsSync(latestFile)) {
+      try {
+        previousCount = JSON.parse(fs.readFileSync(latestFile, 'utf8')).length;
+      } catch {
+        previousCount = 0;
+      }
+    }
+    assertNotRegressed(combined.length, previousCount, 'Merged toll plaza dataset', maxDropRatio);
+
+    // Minified version for size optimization and direct API access.
+    // Written via write-temp-then-rename: a thrown validation error above
+    // leaves the existing latest.json completely untouched.
+    const tmpFile = `${latestFile}.${process.pid}.tmp`;
+    fs.writeFileSync(tmpFile, JSON.stringify(combined));
+    fs.renameSync(tmpFile, latestFile);
     const sizeKb = (fs.statSync(latestFile).size / 1024).toFixed(2);
-    console.log(`Saved combined dataset to ${latestFile} (${sizeKb}KB)`);
-    
+    console.log(`Saved combined dataset to ${latestFile} (${sizeKb}KB, previous: ${previousCount} plazas)`);
+
     return combined;
   } catch (error) {
     console.error('Error merging data sources:', error.message);
-    process.exit(1);
+    console.error('Existing latest.json was left untouched.');
+    if (require.main === module) {
+      process.exit(1);
+    }
+    throw error;
   }
 }
 

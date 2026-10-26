@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { assertNotRegressed, writeJsonIfValid } = require('./lib/datasetGuard');
 
 const FIELD_MAPPING = {
   'tollplaza_id': 'tollplaza_id',
@@ -78,34 +79,95 @@ function normalizeNhaiData(rawPlaza) {
   return normalized;
 }
 
-async function processNhai() {
+/** Validates the raw JSON pulled from .temp_raw_details.json before it is ever normalized. */
+function validateRawPlazas(rawPlazas) {
+  if (!Array.isArray(rawPlazas)) {
+    throw new Error('Raw details file does not contain a JSON array');
+  }
+  if (rawPlazas.length === 0) {
+    throw new Error('Raw details file contains zero plazas');
+  }
+  const missingId = rawPlazas.filter(p => !p || typeof p !== 'object' || p.tollplaza_id == null);
+  if (missingId.length > 0) {
+    throw new Error(`${missingId.length} raw plaza record(s) are missing a tollplaza_id`);
+  }
+}
+
+/** Validates normalized records before they are allowed to overwrite nhai.json. */
+function validateNormalizedPlazas(plazas) {
+  const invalid = plazas.filter(p => {
+    if (!p.tollplaza_id || !p.tollplaza_name) return true;
+    if (p.latitude != null && Number.isNaN(Number(p.latitude))) return true;
+    if (p.longitude != null && Number.isNaN(Number(p.longitude))) return true;
+    return false;
+  });
+  if (invalid.length > 0) {
+    throw new Error(`${invalid.length} normalized plaza record(s) failed validation (missing id/name, or non-numeric coordinates)`);
+  }
+}
+
+async function processNhai(options = {}) {
+  const maxDropRatio = options.maxDropRatio ?? 0.15;
+  const rawFile = options.rawFile || path.join(__dirname, '../data/sources/.temp_raw_details.json');
+  const nhaiFile = options.nhaiFile || path.join(__dirname, '../data/sources/nhai.json');
+
   try {
     console.log('Processing NHAI data...');
 
-    const rawFile = path.join(__dirname, '../data/sources/.temp_raw_details.json');
     if (!fs.existsSync(rawFile)) {
-      throw new Error('Raw details file not found. Run fetchNhaiDetails.js first');
+      throw new Error(
+        'Raw details file not found. Run fetchNhaiData.js first ' +
+        '(it always writes this file once it starts fetching, even on partial failure).'
+      );
     }
 
-    const rawPlazas = JSON.parse(fs.readFileSync(rawFile, 'utf8'));
+    let rawPlazas;
+    try {
+      rawPlazas = JSON.parse(fs.readFileSync(rawFile, 'utf8'));
+    } catch (error) {
+      throw new Error(`Raw details file contains invalid JSON: ${error.message}`);
+    }
+
+    validateRawPlazas(rawPlazas);
+
     const normalizedPlazas = rawPlazas.map(normalizeNhaiData);
+    validateNormalizedPlazas(normalizedPlazas);
 
-    console.log(`Processed ${normalizedPlazas.length} NHAI toll plazas`);
+    let previousCount = 0;
+    if (fs.existsSync(nhaiFile)) {
+      try {
+        previousCount = JSON.parse(fs.readFileSync(nhaiFile, 'utf8')).length;
+      } catch {
+        previousCount = 0;
+      }
+    }
+    assertNotRegressed(normalizedPlazas.length, previousCount, 'NHAI dataset', maxDropRatio);
 
-    // Save normalized NHAI data
-    const sourcesDir = path.join(__dirname, '../data/sources');
+    console.log(`Processed ${normalizedPlazas.length} NHAI toll plazas (previous: ${previousCount})`);
+
+    const sourcesDir = path.dirname(nhaiFile);
     if (!fs.existsSync(sourcesDir)) {
       fs.mkdirSync(sourcesDir, { recursive: true });
     }
 
-    const nhaiFile = path.join(sourcesDir, 'nhai.json');
-    fs.writeFileSync(nhaiFile, JSON.stringify(normalizedPlazas, null, 2));
+    // Validation already ran above; this call re-runs it defensively and then
+    // writes via write-temp-then-rename, so nhai.json is only ever replaced
+    // once a valid result exists on disk — a thrown error here leaves the
+    // existing nhai.json completely untouched.
+    writeJsonIfValid(nhaiFile, normalizedPlazas, {
+      pretty: true,
+      validateFn: validateNormalizedPlazas,
+    });
 
     console.log(`Saved to ${nhaiFile}`);
     return normalizedPlazas;
   } catch (error) {
     console.error('Error processing NHAI data:', error.message);
-    process.exit(1);
+    console.error('Existing nhai.json was left untouched.');
+    if (require.main === module) {
+      process.exit(1);
+    }
+    throw error;
   }
 }
 
@@ -113,4 +175,4 @@ if (require.main === module) {
   processNhai();
 }
 
-module.exports = { processNhai, normalizeNhaiData };
+module.exports = { processNhai, normalizeNhaiData, validateRawPlazas, validateNormalizedPlazas };

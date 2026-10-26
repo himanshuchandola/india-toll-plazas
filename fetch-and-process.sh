@@ -89,10 +89,23 @@ cp "$DATA_DIR/latest.json" "$VERSIONED_DIR/tollplazas.json"
 # Log summary
 TOTAL_PLAZAS=$(jq 'length' "$DATA_DIR/latest.json" 2>/dev/null || echo "unknown")
 SIZE=$(du -h "$DATA_DIR/latest.json" 2>/dev/null | awk '{print $1}')
+FAILED_PLAZAS_FILE="$DATA_DIR/sources/.failed_plazas.json"
+FAILED_COUNT=0
+if [ -f "$FAILED_PLAZAS_FILE" ]; then
+  FAILED_COUNT=$(jq 'length' "$FAILED_PLAZAS_FILE" 2>/dev/null || echo 0)
+fi
+
 echo -e "${GREEN}========================================${NC}"
 echo -e "${GREEN}✓ Data update completed successfully${NC}"
 echo -e "${GREEN}Date: $CURRENT_DATE${NC}"
 echo -e "${GREEN}Total toll plazas: $TOTAL_PLAZAS${NC}"
 echo -e "${GREEN}Output: $DATA_DIR/latest.json (${SIZE})${NC}"
 echo -e "${GREEN}Versioned: $VERSIONED_DIR/tollplazas.json${NC}"
+if [ "$FAILED_COUNT" != "0" ]; then
+  echo -e "${YELLOW}⚠ $FAILED_COUNT NHAI plaza detail request(s) failed and were skipped.${NC}"
+  echo -e "${YELLOW}  See $FAILED_PLAZAS_FILE — re-run this workflow to retry just those.${NC}"
+else
+  # Full clean run — clear any leftover checkpoint so the next run starts fresh.
+  rm -f "$DATA_DIR/sources/.checkpoint_raw_details.json" "$FAILED_PLAZAS_FILE"
+fi
 echo -e "${GREEN}========================================${NC}"

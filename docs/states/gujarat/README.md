@@ -2,7 +2,7 @@
 
 Browse **97 FASTag toll plazas** across 25 national highways in Gujarat. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 64 complete, 33 partial · **Last updated:** 2026-07-07
+**Coverage:** 64 complete, 33 partial · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -22,11 +22,11 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
-| Ahmedabad (Ring Road)  (Entry Exit Toll) | NE 1 | 3.800 | [22.973846, 72.473028](https://www.google.com/maps?q=22.973846,72.473028) | 0 | complete |
 | Ahmedabad Vadodra Expressways  | NE 1 | 3.800 | [22.975793, 72.650335](https://www.google.com/maps?q=22.975793,72.650335) |  | complete |
+| Ahmedabad (Ring Road)  (Entry Exit Toll) | NE 1 | 3.800 | [22.973846, 72.473028](https://www.google.com/maps?q=22.973846,72.473028) | 0 | complete |
 | Nadiad | NE 1 | 43.855 | [22.6977994, 72.8966397](https://www.google.com/maps?q=22.6977994,72.8966397) | 0 | complete |
-| Anand (Close Loop Toll) | NE 1 | 86.000 | [22.5977977, 72.9849471](https://www.google.com/maps?q=22.5977977,72.9849471) | 0 | complete |
 | Vadodara  (Close Loop Toll) | NE 1 | 86.000 | [22.96882, 72.65872](https://www.google.com/maps?q=22.96882,72.65872) | 0 | complete |
+| Anand (Close Loop Toll) | NE 1 | 86.000 | [22.5977977, 72.9849471](https://www.google.com/maps?q=22.5977977,72.9849471) | 0 | complete |
 | Ahmedabad Ring Road 2 | NE 01 | Devghat  | [23.1334265, 72.5933495](https://www.google.com/maps?q=23.1334265,72.5933495) | 0 | complete |
 | DodakaToll Plaza (Close Loop Toll) | NE- 4 | Chainage Km 847.291 | [22.44996, 73.096926](https://www.google.com/maps?q=22.44996,73.096926) | 0 | complete |
 | Fajalpur Toll Plaza (Close Loop Toll) | NE- 4 | Chainage Km 849.171 | [22.434735, 73.087196](https://www.google.com/maps?q=22.434735,73.087196) | 0 | complete |
@@ -36,8 +36,8 @@ What "confidence" means, so you know how much to trust a given rate:
 | Ena Toll Plaza  | NE-04  | Sameerapalem(V), Voletivaripalem (M), SPSR Nellore District | [21.108402, 73.031353](https://www.google.com/maps?q=21.108402,73.031353) | 95 | complete |
 | Nageshri | 8E | 152.05 | [20.916389, 71.321944](https://www.google.com/maps?q=20.916389,71.321944) | 95 | complete |
 | Kobadi | 8E | 18.15 | [21.61976, 72.1415933](https://www.google.com/maps?q=21.61976,72.1415933) | 90 | complete |
-| Gorsar | 8E | Jamni, Dist Jind | [21.318554, 69.909762](https://www.google.com/maps?q=21.318554,69.909762) | 135 | complete |
 | Kuchadi | 8E | Jamni, Dist Jind | [21.6975366, 69.5328098](https://www.google.com/maps?q=21.6975366,69.5328098) | 135 | complete |
+| Gorsar | 8E | Jamni, Dist Jind | [21.318554, 69.909762](https://www.google.com/maps?q=21.318554,69.909762) | 135 | complete |
 | Vanana | 8B (New 27) | Km 10.755 | [21.664929, 69.709536](https://www.google.com/maps?q=21.664929,69.709536) | 85 | complete |
 | Dari |   8 D( New 151) | Km 108.980 | [20.961287, 70.334349](https://www.google.com/maps?q=20.961287,70.334349) | 105 | complete |
 | Pithadia | 8B (New 27) | Km 120.700 | [21.805381, 70.66397](https://www.google.com/maps?q=21.805381,70.66397) | 35 | complete |
@@ -56,16 +56,16 @@ What "confidence" means, so you know how much to trust a given rate:
 | Khemana | 27 | Km 602.750 | [24.241335, 72.462709](https://www.google.com/maps?q=24.241335,72.462709) | 80 | complete |
 | Dhumiyani | 27 (New 8A) | Km 82.215 | [21.751451, 70.326793](https://www.google.com/maps?q=21.751451,70.326793) | 125 | complete |
 | Pithai | 47 | Jamudihi, Koida, Sundergarh (At 110.436Km) | [22.9128, 72.957428](https://www.google.com/maps?q=22.9128,72.957428) | 130 | complete |
-| Vavadikhurd | 47 | Jamudihi, Koida, Sundergarh (At 110.436Km) | [22.792571, 73.533274](https://www.google.com/maps?q=22.792571,73.533274) | 145 | complete |
+| Vavadikhurd | 47 | Jamudihi, Koida, Sundergarh (At 110.436Km) | [22.792571, 73.533274](https://www.google.com/maps?q=22.792571,73.533274) | 150 | complete |
 | Bhatwada | 47(Old 59) | Km 146.400 | [22.792886, 73.842871](https://www.google.com/maps?q=22.792886,73.842871) | 190 | complete |
-| Radhvanaj (Kheda ) Toll Plaza | 48 |  (Ch-92+000) | [22.715971, 72.740887](https://www.google.com/maps?q=22.715971,72.740887) | 115 | complete |
 | Vasad Toll Plaza | 48 |  (Ch-92+000) | [22.453254, 73.070539](https://www.google.com/maps?q=22.453254,73.070539) | 160 | complete |
+| Radhvanaj (Kheda ) Toll Plaza | 48 |  (Ch-92+000) | [22.715971, 72.740887](https://www.google.com/maps?q=22.715971,72.740887) | 115 | complete |
 | Mandva | 48 | Km 195.800 | [21.702698, 73.059975](https://www.google.com/maps?q=21.702698,73.059975) | 30 | complete |
-| Choryasi | 48 | Km 245.650 | [21.303367, 72.95418](https://www.google.com/maps?q=21.303367,72.95418) | 125 | complete |
+| Choryasi  | 48 | Km 245.650 | [21.303367, 72.95418](https://www.google.com/maps?q=21.303367,72.95418) | 125 | complete |
 | Boriach | 48 | Km 297.300 | [20.885548, 73.052162](https://www.google.com/maps?q=20.885548,73.052162) | 120 | complete |
 | Bhagwada | 48 | Km 356.200 | [20.43495, 72.917204](https://www.google.com/maps?q=20.43495,72.917204) | 125 | complete |
-| Kathpur | 48 | Km. 518.285 | [23.410181, 72.828618](https://www.google.com/maps?q=23.410181,72.828618) | 70 | complete |
 | Vantada | 48 | Km. 518.285 | [23.61615, 73.254472](https://www.google.com/maps?q=23.61615,73.254472) | 35 | complete |
+| Kathpur | 48 | Km. 518.285 | [23.410181, 72.828618](https://www.google.com/maps?q=23.410181,72.828618) | 75 | complete |
 | Velva Toll Plaza | 51 | 212.325 | [20.805689, 70.813503](https://www.google.com/maps?q=20.805689,70.813503) | 80 | complete |
 | Rohisa | 51 | At 79.370 Km (Rohisa village) | [21.190534, 71.8638496](https://www.google.com/maps?q=21.190534,71.8638496) | 120 | complete |
 | Sundarpara Toll Plaza | 51 | Sundarpara Village | [20.901721, 70.515003](https://www.google.com/maps?q=20.901721,70.515003) | 75 | complete |
@@ -80,12 +80,12 @@ What "confidence" means, so you know how much to trust a given rate:
 | Bhirandiyara Fee Plaza | 341 | Near Bhirandiyara Village | [23.634998, 69.69252](https://www.google.com/maps?q=23.634998,69.69252) | 90 | complete |
 | Varshamedi Toll Plaza | 341 | Varshamedi | [23.146133, 70.108406](https://www.google.com/maps?q=23.146133,70.108406) | 50 | complete |
 | Bhadbhid | 751 | Km. 142.290 | [21.985008, 72.091742](https://www.google.com/maps?q=21.985008,72.091742) | 85 | complete |
-| Bakutra TP29 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [23.797251, 71.196877](https://www.google.com/maps?q=23.797251,71.196877) | 0 | complete |
-| Budhanpur TP25  (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.419165, 71.650345](https://www.google.com/maps?q=24.419165,71.650345) | 0 | complete |
-| Jorawargadh  TP27 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.088442, 71.469401](https://www.google.com/maps?q=24.088442,71.469401) |  | complete |
 | Nana Masera (Mota Masera) TP 24 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.587901, 71.719991](https://www.google.com/maps?q=24.587901,71.719991) | 0 | complete |
+| Budhanpur TP25  (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.419165, 71.650345](https://www.google.com/maps?q=24.419165,71.650345) | 0 | complete |
 | Tharad TP26 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.378373, 71.646145](https://www.google.com/maps?q=24.378373,71.646145) | 0 | complete |
+| Jorawargadh  TP27 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [24.088442, 71.469401](https://www.google.com/maps?q=24.088442,71.469401) |  | complete |
 | Varnosari TP28 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [23.910654, 71.339031](https://www.google.com/maps?q=23.910654,71.339031) | 0 | complete |
+| Bakutra TP29 (Close Loop Toll) | 754A | At Km. 515+100 on NH-26 | [23.797251, 71.196877](https://www.google.com/maps?q=23.797251,71.196877) | 0 | complete |
 | HSTL TP01-Khadki |  | NETC 536002; HSTL TP01-Khadki; Khadki, Gujarat; 22.647996,73.519776 | [22.647996, 73.519776](https://www.google.com/maps?q=22.647996,73.519776) | 0 | partial |
 | HSTLTP02-GamanBariyanamuvada |  | NETC 536003; HSTLTP02-GamanBariyanamuvada; GamanBariya namuvada, Gujarat; 23.012769,73.618040 | [23.012769, 73.618040](https://www.google.com/maps?q=23.012769,73.618040) | 0 | partial |
 | HSTL TP03-Galiya Danti |  | NETC 536004; HSTL TP03-Galiya Danti; GaliyaDanti, Gujarat; 23.363961,73.515235 | [23.363961, 73.515235](https://www.google.com/maps?q=23.363961,73.515235) | 0 | partial |

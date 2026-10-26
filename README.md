@@ -32,7 +32,7 @@ The dataset is free and open. Grab it with a single HTTP request — no signup, 
 ## Coverage at a glance
 
 <!-- STATE_STATS:START -->
-**1,674 toll plazas** across **26 states/UTs** — dataset last updated 2026-07-07
+**1,701 toll plazas** across **26 states/UTs** — dataset last updated 2026-10-26
 <!-- STATE_STATS:END -->
 
 Browse individual state pages below, or jump straight to [docs/states/](docs/states/) for the full listing.
@@ -40,32 +40,32 @@ Browse individual state pages below, or jump straight to [docs/states/](docs/sta
 <!-- STATE_TABLE:START -->
 | State | Plazas | Highways | Confidence (c/p/v) | Updated | Browse |
 |---|---|---|---|---|---|
-| [Andhra Pradesh](docs/states/andhra-pradesh/README.md) | 103 | 37 | 94c / 9p | 2026-07-07 | [Browse](docs/states/andhra-pradesh/README.md) |
-| [Assam](docs/states/assam/README.md) | 12 | 8 | 12c | 2026-07-07 | [Browse](docs/states/assam/README.md) |
-| [Bihar](docs/states/bihar/README.md) | 43 | 21 | 43c | 2026-07-07 | [Browse](docs/states/bihar/README.md) |
-| [Chhattisgarh](docs/states/chhattisgarh/README.md) | 25 | 9 | 25c | 2026-07-07 | [Browse](docs/states/chhattisgarh/README.md) |
-| [Delhi](docs/states/delhi/README.md) | 21 | 11 | 21c | 2026-07-07 | [Browse](docs/states/delhi/README.md) |
-| [Goa](docs/states/goa/README.md) | 1 | 1 | 1c | 2026-07-07 | [Browse](docs/states/goa/README.md) |
-| [Gujarat](docs/states/gujarat/README.md) | 97 | 25 | 64c / 33p | 2026-07-07 | [Browse](docs/states/gujarat/README.md) |
-| [Haryana](docs/states/haryana/README.md) | 88 | 26 | 72c / 16p | 2026-07-07 | [Browse](docs/states/haryana/README.md) |
-| [Himachal Pradesh](docs/states/himachal-pradesh/README.md) | 15 | 4 | 4c / 11p | 2026-07-07 | [Browse](docs/states/himachal-pradesh/README.md) |
-| [Jammu & Kashmir](docs/states/jammu-kashmir/README.md) | 8 | 2 | 8c | 2026-07-07 | [Browse](docs/states/jammu-kashmir/README.md) |
-| [Jharkhand](docs/states/jharkhand/README.md) | 24 | 11 | 23c / 1p | 2026-07-07 | [Browse](docs/states/jharkhand/README.md) |
-| [Karnataka](docs/states/karnataka/README.md) | 68 | 26 | 68c | 2026-07-07 | [Browse](docs/states/karnataka/README.md) |
-| [Kerala](docs/states/kerala/README.md) | 11 | 5 | 11c | 2026-07-07 | [Browse](docs/states/kerala/README.md) |
-| [Madhya Pradesh](docs/states/madhya-pradesh/README.md) | 110 | 54 | 110c | 2026-07-07 | [Browse](docs/states/madhya-pradesh/README.md) |
-| [Maharashtra](docs/states/maharashtra/README.md) | 203 | 48 | 105c / 96p / 2v | 2026-07-07 | [Browse](docs/states/maharashtra/README.md) |
-| [Meghalaya](docs/states/meghalaya/README.md) | 4 | 1 | 4c | 2026-07-07 | [Browse](docs/states/meghalaya/README.md) |
-| [Odisha](docs/states/odisha/README.md) | 38 | 17 | 35c / 3p | 2026-07-07 | [Browse](docs/states/odisha/README.md) |
-| [Punjab](docs/states/punjab/README.md) | 44 | 23 | 44c | 2026-07-07 | [Browse](docs/states/punjab/README.md) |
-| [Punjab & Haryana (mixed)](docs/states/punjab-haryana/README.md) | 1 | 1 | 1c | 2026-07-07 | [Browse](docs/states/punjab-haryana/README.md) |
-| [Rajasthan](docs/states/rajasthan/README.md) | 391 | 56 | 171c / 216p / 4v | 2026-07-07 | [Browse](docs/states/rajasthan/README.md) |
-| [Tamil Nadu](docs/states/tamil-nadu/README.md) | 106 | 40 | 83c / 23p | 2026-07-07 | [Browse](docs/states/tamil-nadu/README.md) |
-| [Telangana](docs/states/telangana/README.md) | 67 | 13 | 32c / 35p | 2026-07-07 | [Browse](docs/states/telangana/README.md) |
-| [Unspecified](docs/states/unspecified/README.md) | 1 | 1 | 1c | 2026-07-07 | [Browse](docs/states/unspecified/README.md) |
-| [Uttar Pradesh](docs/states/uttar-pradesh/README.md) | 133 | 53 | 133c | 2026-07-07 | [Browse](docs/states/uttar-pradesh/README.md) |
-| [Uttarakhand](docs/states/uttarakhand/README.md) | 28 | 8 | 13c / 15p | 2026-07-07 | [Browse](docs/states/uttarakhand/README.md) |
-| [West Bengal](docs/states/west-bengal/README.md) | 32 | 21 | 31c / 1p | 2026-07-07 | [Browse](docs/states/west-bengal/README.md) |
+| [Andhra Pradesh](docs/states/andhra-pradesh/README.md) | 111 | 40 | 102c / 9p | 2026-10-26 | [Browse](docs/states/andhra-pradesh/README.md) |
+| [Assam](docs/states/assam/README.md) | 12 | 8 | 12c | 2026-10-26 | [Browse](docs/states/assam/README.md) |
+| [Bihar](docs/states/bihar/README.md) | 44 | 21 | 44c | 2026-10-26 | [Browse](docs/states/bihar/README.md) |
+| [Chhattisgarh](docs/states/chhattisgarh/README.md) | 26 | 10 | 26c | 2026-10-26 | [Browse](docs/states/chhattisgarh/README.md) |
+| [Delhi](docs/states/delhi/README.md) | 21 | 11 | 21c | 2026-10-26 | [Browse](docs/states/delhi/README.md) |
+| [Goa](docs/states/goa/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/goa/README.md) |
+| [Gujarat](docs/states/gujarat/README.md) | 97 | 25 | 64c / 33p | 2026-10-26 | [Browse](docs/states/gujarat/README.md) |
+| [Haryana](docs/states/haryana/README.md) | 87 | 27 | 71c / 16p | 2026-10-26 | [Browse](docs/states/haryana/README.md) |
+| [Himachal Pradesh](docs/states/himachal-pradesh/README.md) | 15 | 4 | 4c / 11p | 2026-10-26 | [Browse](docs/states/himachal-pradesh/README.md) |
+| [Jammu & Kashmir](docs/states/jammu-kashmir/README.md) | 8 | 2 | 8c | 2026-10-26 | [Browse](docs/states/jammu-kashmir/README.md) |
+| [Jharkhand](docs/states/jharkhand/README.md) | 24 | 11 | 23c / 1p | 2026-10-26 | [Browse](docs/states/jharkhand/README.md) |
+| [Karnataka](docs/states/karnataka/README.md) | 68 | 26 | 68c | 2026-10-26 | [Browse](docs/states/karnataka/README.md) |
+| [Kerala](docs/states/kerala/README.md) | 12 | 5 | 12c | 2026-10-26 | [Browse](docs/states/kerala/README.md) |
+| [Madhya Pradesh](docs/states/madhya-pradesh/README.md) | 110 | 54 | 110c | 2026-10-26 | [Browse](docs/states/madhya-pradesh/README.md) |
+| [Maharashtra](docs/states/maharashtra/README.md) | 205 | 49 | 107c / 96p / 2v | 2026-10-26 | [Browse](docs/states/maharashtra/README.md) |
+| [Meghalaya](docs/states/meghalaya/README.md) | 4 | 1 | 4c | 2026-10-26 | [Browse](docs/states/meghalaya/README.md) |
+| [Odisha](docs/states/odisha/README.md) | 39 | 17 | 36c / 3p | 2026-10-26 | [Browse](docs/states/odisha/README.md) |
+| [Punjab](docs/states/punjab/README.md) | 48 | 24 | 48c | 2026-10-26 | [Browse](docs/states/punjab/README.md) |
+| [Punjab & Haryana (mixed)](docs/states/punjab-haryana/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/punjab-haryana/README.md) |
+| [Rajasthan](docs/states/rajasthan/README.md) | 394 | 57 | 174c / 216p / 4v | 2026-10-26 | [Browse](docs/states/rajasthan/README.md) |
+| [Tamil Nadu](docs/states/tamil-nadu/README.md) | 108 | 41 | 85c / 23p | 2026-10-26 | [Browse](docs/states/tamil-nadu/README.md) |
+| [Telangana](docs/states/telangana/README.md) | 67 | 13 | 32c / 35p | 2026-10-26 | [Browse](docs/states/telangana/README.md) |
+| [Unspecified](docs/states/unspecified/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/unspecified/README.md) |
+| [Uttar Pradesh](docs/states/uttar-pradesh/README.md) | 138 | 56 | 138c | 2026-10-26 | [Browse](docs/states/uttar-pradesh/README.md) |
+| [Uttarakhand](docs/states/uttarakhand/README.md) | 28 | 8 | 13c / 15p | 2026-10-26 | [Browse](docs/states/uttarakhand/README.md) |
+| [West Bengal](docs/states/west-bengal/README.md) | 32 | 20 | 31c / 1p | 2026-10-26 | [Browse](docs/states/west-bengal/README.md) |
 <!-- STATE_TABLE:END -->
 
 ---
@@ -139,9 +139,15 @@ Full refresh (matches what maintainers run before pushing data):
 ./fetch-and-process.sh
 ```
 
+Or **without typing any shell command**: in VS Code (or any editor that reads `.vscode/tasks.json`), open the Command Palette → **Tasks: Run Task** → **Update Toll Data**. It runs the same `fetch-and-process.sh` pipeline in a dedicated terminal panel so you can watch progress, and it ends with a plain-language summary (total plazas, any failed NHAI plaza requests, where the output landed). The same thing is also available as an npm script (visible in VS Code's "NPM Scripts" explorer panel) if you prefer that entry point: `npm run update-toll-data`.
+
 Granular steps (same order as the script): `fetchNhaiData.js` → optional `getVehicleTypes.js` / `getStates.js` → `processNhai.js` → `processStateHighways.js` → `merge.js` → `generateReadmes.js`. After state JSON edits only: `npm run process-state && npm run merge && npm run generate-readmes`.
 
 **Why not fetch NHAI from GitHub Actions only?** RajMargyatra often blocks cloud IPs; a normal residential / office connection works reliably.
+
+**Resuming an interrupted refresh.** `fetchNhaiData.js` checkpoints every plaza's details to `data/sources/.checkpoint_raw_details.json` after each batch. If the fetch is interrupted (network drop, closed terminal, Ctrl+C), just re-run `./fetch-and-process.sh` (or the task/npm script above) — it picks up where it left off, only re-requesting plazas that hadn't succeeded yet, instead of starting over or silently producing a half-empty dataset. Failed plaza requests are written to `data/sources/.failed_plazas.json` with their error, and are retried automatically (with backoff) on the next run; pass `node scripts/fetchNhaiData.js --fresh` to ignore the checkpoint and refetch everything from scratch. The NETC Plaza Master PDF check and the vehicle-type/state lookups are optional/supplementary steps — if any of them fail, the pipeline logs a warning and keeps going rather than aborting the whole refresh.
+
+**Data safety.** `nhai.json`, `state_highways.json`, and `latest.json` are only ever overwritten after the newly fetched/merged data passes validation (non-empty, well-formed, no implausible drop in plaza count vs. the previous run) — if validation fails for any reason, the existing files (and the hand-curated rates under `data/sources/curated/`, which this pipeline never touches) are left exactly as they were. Automated tests for this — interrupted downloads, partial failures, corrupt/invalid JSON — live under `test/`; run them with `npm test`.
 
 **Layout (simplified):**
 
