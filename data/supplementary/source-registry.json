@@ -1,0 +1,426 @@
+{
+  "registryVersion": 1,
+  "checkedAt": "2026-10-26T12:03:54Z",
+  "checkedBy": "tollwise audit session",
+  "datasets": [
+    {
+      "datasetId": 21597,
+      "role": "nhai_plaza_master",
+      "intendedUse": "Candidate for reconciling plaza codes/names/coordinates against data/latest.json",
+      "title": "State, Project Implementation Unit (PIU), NHAI Regional Office wise List of NHAI Toll Plazas",
+      "listingUrl": "https://dataful.in/datasets/21597/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "Ministry of Road Transport and Highways",
+      "originalSource": "NHAI",
+      "listing": {
+        "rowsReported": 1452,
+        "columnsReported": 9,
+        "columnNamesSeenOnListing": [
+          "data_as_on",
+          "state",
+          "toll_plaza_code",
+          "toll_plaza_name",
+          "toll_plaza_type",
+          "project_implementation_unit",
+          "regional_office"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2026",
+        "updateFrequency": "Monthly",
+        "granularity": "State, Project Implementation Unit (PIU), NHAI Regional Office",
+        "lastUpdatedLabel": "03 August 2026",
+        "structuredDataDateModified": "2026-08-03T05:32:01Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": true,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": true,
+        "observation": "Download CSV button opens a Sign in / Sign up dialog (institution login, IP login, or email/Google account); no file is obtainable without an account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 21607,
+      "role": "fastag_by_vehicle_category",
+      "intendedUse": "Monthly counts/amounts by plaza and vehicle category (aggregate activity; never a per-vehicle tariff)",
+      "title": "Year, Month, State, Toll Plaza and Vehicle Category-wise Value and Volume of Fastag Transactions",
+      "listingUrl": "https://dataful.in/datasets/21607/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "Ministry of Road Transport and Highways",
+      "originalSource": "Indian Highways Management Company Limited (IHMCL)",
+      "listing": {
+        "rowsReported": 321804,
+        "columnsReported": 12,
+        "columnNamesSeenOnListing": [
+          "fiscal_year",
+          "month",
+          "state",
+          "plaza_name",
+          "project_implementation_unit",
+          "regional_office",
+          "latitude",
+          "vehicle_type",
+          "units"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2022-23 to 2026-27",
+        "updateFrequency": "Monthly",
+        "granularity": "Year, Month, State, Toll Plaza, Vehicle Type",
+        "lastUpdatedLabel": "16 October 2026",
+        "structuredDataDateModified": "2026-10-16T06:26:28Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": false,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": null,
+        "observation": "Listing marks the dataset as not free (subscription). Download not attempted: requires a paid account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 19664,
+      "role": "fastag_monthly_by_plaza",
+      "intendedUse": "Monthly vehicle counts and amount collected per plaza (aggregate activity; never a per-vehicle tariff)",
+      "title": "Year, Month, State and Toll Plaza-wise Value and Volume of Fastag Transactions",
+      "listingUrl": "https://dataful.in/datasets/19664/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "Ministry of Road Transport and Highways",
+      "originalSource": "Indian Highways Management Company Limited (IHMCL)",
+      "listing": {
+        "rowsReported": 55514,
+        "columnsReported": 10,
+        "columnNamesSeenOnListing": [
+          "fiscal_year",
+          "month",
+          "state",
+          "plaza_name",
+          "vehicle_count",
+          "amount_collected",
+          "units",
+          "notes"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2021-22 to 2026-27",
+        "updateFrequency": "Monthly",
+        "granularity": "Year, Month, State, Toll Plaza",
+        "lastUpdatedLabel": "16 October 2026",
+        "structuredDataDateModified": "2026-10-16T07:22:46Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": false,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": null,
+        "observation": "Listing marks the dataset as not free (subscription). Download not attempted: requires a paid account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 21608,
+      "role": "annual_pass_transactions",
+      "intendedUse": "Annual-pass transaction counts per plaza/month",
+      "title": "Year, Month, State and Toll Plaza-wise Total Number of Annual Pass Transactions (Including Single Journey, Return Journey etc.)",
+      "listingUrl": "https://dataful.in/datasets/21608/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "Ministry of Road Transport and Highways",
+      "originalSource": "Indian Highways Management Company Limited (IHMCL)",
+      "listing": {
+        "rowsReported": 31681,
+        "columnsReported": 12,
+        "columnNamesSeenOnListing": [
+          "fiscal_year",
+          "month",
+          "state",
+          "plaza_name",
+          "project_implementation_unit",
+          "regional_office",
+          "journey_type",
+          "units",
+          "notes"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2025-26 to 2026-27",
+        "updateFrequency": "Monthly",
+        "granularity": "Year, Month, State, City, Toll Plaza",
+        "lastUpdatedLabel": "16 October 2026",
+        "structuredDataDateModified": "2026-10-16T06:55:49Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": false,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": null,
+        "observation": "Listing marks the dataset as not free (subscription). Download not attempted: requires a paid account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 23755,
+      "role": "mlff_statistics",
+      "intendedUse": "MLFF pilot statistics per plaza/vehicle type",
+      "title": "MLFF Based Tolling: Vehicle Category-wise Annual Passes, E-Notice Collections, E-Notice Volume, and ETC Transaction Value & Volume",
+      "listingUrl": "https://dataful.in/datasets/23755/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "Ministry of Road Transport and Highways",
+      "originalSource": "Indian Highways Management Company Limited (IHMCL)",
+      "listing": {
+        "rowsReported": 508,
+        "columnsReported": 12,
+        "columnNamesSeenOnListing": [
+          "time_period",
+          "state",
+          "toll_plaza_name",
+          "project_implementation_unit",
+          "regional_office",
+          "vehicle_type",
+          "category",
+          "units",
+          "notes"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2026",
+        "updateFrequency": "Monthly",
+        "granularity": "State, Toll Plaza, Vehicle Type",
+        "lastUpdatedLabel": "13 October 2026",
+        "structuredDataDateModified": "2026-10-13T06:27:49Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": false,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": null,
+        "observation": "Listing marks the dataset as not free (subscription). Download not attempted: requires a paid account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 399,
+      "role": "netc_processing_time",
+      "intendedUse": "Share of NETC transactions processed within 2 minutes; payment-system performance, not toll data",
+      "title": "NETC: Year and Month wise percentage of the transaction processed within 2 minutes of the toll plaza transaction reader's read time",
+      "listingUrl": "https://dataful.in/datasets/399/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "National Payments Corporation of India",
+      "originalSource": "National Payments Corporation of India",
+      "listing": {
+        "rowsReported": 85924,
+        "columnsReported": 8,
+        "columnNamesSeenOnListing": [
+          "fiscal_year",
+          "month",
+          "toll_plaza_name",
+          "toll_plaza_type",
+          "units",
+          "notes"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2021-22 to 2026-27",
+        "updateFrequency": "Monthly",
+        "granularity": "Year, Month, Toll Plaza ID, Toll Plaza Name",
+        "lastUpdatedLabel": "13 October 2026",
+        "structuredDataDateModified": "2026-10-13T04:35:38Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": false,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": null,
+        "observation": "Listing marks the dataset as not free (subscription). Download not attempted: requires a paid account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    },
+    {
+      "datasetId": 18246,
+      "role": "netc_bank_wise",
+      "intendedUse": "Issuer/acquirer bank transaction volumes; payment-system data, no plaza-level information",
+      "title": "Digital Payments and Transactions: Year-, Month- and Bank-wise Volume of NETC FASTag Transactions",
+      "listingUrl": "https://dataful.in/datasets/18246/",
+      "publisherOfCompilation": "Dataful (Factly Media & Research)",
+      "originalOrganisation": "National Payments Corporation of India",
+      "originalSource": "National Payments Corporation of India",
+      "listing": {
+        "rowsReported": 9051,
+        "columnsReported": 8,
+        "columnNamesSeenOnListing": [
+          "fiscal_year",
+          "month",
+          "bank_name",
+          "bank_type",
+          "category",
+          "units",
+          "notes"
+        ],
+        "columnNamesNote": "Names parsed from the public listing; may be incomplete.",
+        "timePeriodLabel": "2021-22 to 2026-27",
+        "updateFrequency": "Monthly",
+        "granularity": "Year, Month, Bank Name",
+        "lastUpdatedLabel": "21 October 2026",
+        "structuredDataDateModified": "2026-09-24T10:13:54Z",
+        "labelsNote": "These are listing labels, not facts established from a downloaded file; the two update dates can disagree."
+      },
+      "access": {
+        "listingSaysFree": true,
+        "downloadFormatsOffered": [
+          "CSV",
+          "XLSX",
+          "PARQUET"
+        ],
+        "directFileUrlPublished": false,
+        "requiresSignIn": true,
+        "observation": "Download CSV button opens a Sign in / Sign up dialog (institution login, IP login, or email/Google account); no file is obtainable without an account.",
+        "observedAt": "2026-10-26T12:03:54Z"
+      },
+      "licence": {
+        "name": "Custom license",
+        "url": "https://dataful.in/terms-and-conditions",
+        "redistributionInPublicRepo": "not_permitted_or_unconfirmed",
+        "termsSummary": "Terms prohibit reproducing/copying any portion of the service without written permission, scraping/crawling, and re-selling paywalled datasets. Dataful states it does not own the raw government data; it sells compilation value. Attribution to the original source is recommended.",
+        "termsCheckedAt": "2026-10-26T12:03:54Z"
+      },
+      "integration": {
+        "status": "not_integrated",
+        "reason": "No file could be lawfully and automatically obtained (sign-in/subscription required; automated access and redistribution not permitted or unconfirmed).",
+        "rowsDownloaded": 0,
+        "rowsParsed": 0,
+        "checksum": null,
+        "retrievedAt": null,
+        "dataAsOf": null,
+        "schemaValidation": "not_run"
+      }
+    }
+  ]
+}
