@@ -115,7 +115,115 @@ function reconcile(ihmclRows, datasetRecords) {
   for (const r of results) {
     if (isMatch(r.tier) && conflictIds.has(r.candidates[0].id)) r.tier = 'conflict';
   }
-  return { results, conflicts };
+  const stateHints = applyStateHints(results, datasetRecords);
+  return { results, conflicts, stateHints };
+}
+
+
+// ---- State hint (review-only) ------------------------------------------------------------------------------
+// IHMCL rows carry no state, only a PIU and Regional Office. We learn which states each PIU/RO covers from the
+// unique exact matches (conflicts excluded), then use that ONLY to annotate rows for human review. It never
+// changes a tier, never creates a match, and never edits the dataset. Hints are as reliable as the matches they
+// come from, so they need enough support and are skipped otherwise.
+
+const stateKey = (v) => (v ? String(v).toUpperCase().replace(/[^A-Z]/g, '') : null);
+const labelKey = (v) => String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+const sumValues = (m) => [...m.values()].reduce((a, b) => a + b, 0);
+
+function deriveStateHints(results) {
+  const piu = new Map(); const ro = new Map();
+  const add = (m, k, st) => { if (!k || !st) return; const e = m.get(k) || new Map(); e.set(st, (e.get(st) || 0) + 1); m.set(k, e); };
+  for (const r of results) {
+    if (!isMatch(r.tier)) continue;
+    const st = stateKey(r.candidates[0].state);
+    add(piu, labelKey(r.row.piu), st);
+    add(ro, labelKey(r.row.ro), st);
+  }
+  return { piu, ro };
+}
+
+/**
+ * PIU first (needs >=2 supporting matches), else RO (needs >=3 matches; states with >=2 matches and >=5% share).
+ * `ownState` (leave-one-out): when judging an already-matched row, its own match is removed from the counts so a
+ * wrong match cannot vouch for itself.
+ */
+function plausibleStates(row, hints, ownState = null) {
+  const minus = (m) => {
+    if (!m || !ownState || !m.has(ownState)) return m;
+    const c = new Map(m); c.set(ownState, c.get(ownState) - 1); if (c.get(ownState) <= 0) c.delete(ownState); return c;
+  };
+  const p = minus(hints.piu.get(labelKey(row.piu)));
+  if (p && sumValues(p) >= 2) {
+    const total = sumValues(p);
+    return { source: 'piu', support: total, states: [...p.entries()].filter(([, n]) => n / total >= 0.2).map(([st]) => st) };
+  }
+  const r = minus(hints.ro.get(labelKey(row.ro)));
+  if (r && sumValues(r) >= 3) {
+    const total = sumValues(r);
+    return { source: 'ro', support: total, states: [...r.entries()].filter(([, n]) => n >= 2 && n / total >= 0.05).map(([st]) => st) };
+  }
+  return null;
+}
+
+/** Dataset records in the plausible states whose bracket-free name equals, or is a token-prefix of (or extends), the IHMCL name. */
+function stateProposals(row, plaus, datasetRecords, claimedIds) {
+  const toks = normalizeCoreNoParen(row.plazaName).split(' ').filter(Boolean);
+  if (!toks.length) return [];
+  return datasetRecords.filter((d) => {
+    if (claimedIds.has(d.tollplaza_id)) return false;
+    if (!plaus.states.includes(stateKey(d.state_name))) return false;
+    const dt = normalizeCoreNoParen(d.tollplaza_name).split(' ').filter(Boolean);
+    if (!dt.length) return false;
+    const [a, b] = toks.length <= dt.length ? [toks, dt] : [dt, toks];
+    return a.every((t, i) => b[i] === t);
+  });
+}
+
+/** Adds `stateReview` to rows that need it. Pure annotation: tiers and match sets are untouched. */
+function applyStateHints(results, datasetRecords) {
+  const hints = deriveStateHints(results);
+  const claimedIds = new Set(results.filter((r) => isMatch(r.tier)).map((r) => r.candidates[0].id));
+  const counts = {};
+  const bump = (k) => { counts[k] = (counts[k] || 0) + 1; };
+  let noHint = 0;
+
+  for (const r of results) {
+    const plaus = plausibleStates(r.row, hints, isMatch(r.tier) ? stateKey(r.candidates[0].state) : null);
+    if (!plaus || !plaus.states.length) { noHint++; continue; }
+    const evidence = { hintSource: plaus.source, support: plaus.support, plausibleStates: plaus.states };
+    const stateOf = (c) => stateKey(c.state);
+
+    if (isMatch(r.tier)) {
+      const matchedState = stateOf(r.candidates[0]);
+      if (matchedState && !plaus.states.includes(matchedState)) { // a null dataset state is not comparable, so never flagged
+        r.stateReview = { kind: 'matched_state_mismatch', ...evidence, matchedState: r.candidates[0].state };
+      }
+    } else if (r.tier === 'conflict') {
+      const claimed = r.candidates[0];
+      const plausible = plaus.states.includes(stateOf(claimed));
+      const proposals = plausible ? [] : stateProposals(r.row, plaus, datasetRecords, claimedIds).map(brief);
+      r.stateReview = { kind: plausible ? 'conflict_claim_state_plausible' : 'conflict_claim_state_implausible', ...evidence, proposals };
+    } else if (r.tier === 'ambiguous') {
+      const narrowed = r.candidates.filter((c) => plaus.states.includes(stateOf(c)));
+      r.stateReview = { kind: narrowed.length === 1 ? 'ambiguous_narrowed_unique' : narrowed.length > 1 ? 'ambiguous_narrowed_multiple' : 'ambiguous_no_state_match', ...evidence, proposals: narrowed };
+    } else {
+      const proposals = stateProposals(r.row, plaus, datasetRecords, claimedIds).map(brief);
+      if (proposals.length) r.stateReview = { kind: proposals.length === 1 ? 'proposal_unique' : 'proposal_multiple', ...evidence, proposals };
+    }
+    if (r.stateReview) bump(r.stateReview.kind);
+  }
+  return { counts, rowsWithoutHint: noHint, hints };
+}
+
+function summariseStateReview(results) {
+  const pick = (kinds) => results.filter((r) => r.stateReview && kinds.includes(r.stateReview.kind));
+  const fmt = (r) => ({ ihmclName: r.row.plazaName.trim(), piu: r.row.piu, ro: r.row.ro, tier: r.tier, ...r.stateReview });
+  return {
+    proposals: pick(['proposal_unique', 'proposal_multiple', 'ambiguous_narrowed_unique', 'conflict_claim_state_implausible']).map(fmt),
+    matchedStateMismatches: pick(['matched_state_mismatch']).map(fmt),
+    ambiguousStillOpen: pick(['ambiguous_narrowed_multiple', 'ambiguous_no_state_match']).map(fmt),
+    conflictClaimsKept: pick(['conflict_claim_state_plausible']).map(fmt),
+  };
 }
 
 function summarise(ihmclParsed, datasetRecords, rec) {
@@ -136,7 +244,8 @@ function summarise(ihmclParsed, datasetRecords, rec) {
     const missing = d.car_single === null || d.car_single === undefined || String(d.car_single).trim() === '';
     const zero = String(d.car_single).trim() === '0';
     if ((missing || zero) && r.row.counts.car_jeep > 0) {
-      verificationLeads.push({ datasetId: d.tollplaza_id, datasetName: String(d.tollplaza_name).trim(), ihmclName: r.row.plazaName, datasetCarSingle: missing ? 'missing' : '0', ihmclCarJeepCount: r.row.counts.car_jeep, reason: missing ? 'activity reported but no published car single rate' : 'activity reported while dataset car single rate is 0' });
+      const suspect = !!(r.stateReview && r.stateReview.kind === 'matched_state_mismatch');
+      verificationLeads.push({ matchSuspectByState: suspect, datasetId: d.tollplaza_id, datasetName: String(d.tollplaza_name).trim(), ihmclName: r.row.plazaName, datasetCarSingle: missing ? 'missing' : '0', ihmclCarJeepCount: r.row.counts.car_jeep, reason: missing ? 'activity reported but no published car single rate' : 'activity reported while dataset car single rate is 0' });
     }
   }
 
@@ -153,19 +262,24 @@ function summarise(ihmclParsed, datasetRecords, rec) {
       datasetRecordsNotMatchedBySource: bySource(datasetOnly),
       conflicts: rec.conflicts.length,
       verificationLeads: verificationLeads.length,
+      verificationLeadsWithStateSuspectMatch: verificationLeads.filter((l) => l.matchSuspectByState).length,
+      stateReview: rec.stateHints ? rec.stateHints.counts : {},
+      rowsWithoutStateHint: rec.stateHints ? rec.stateHints.rowsWithoutHint : null,
     },
     unmatchedIhmcl: sample(rec.results.filter((r) => r.tier === 'unmatched').map((r) => ({ name: r.row.plazaName, piu: r.row.piu, ro: r.row.ro, totalCount: r.row.totalCount })), 200),
     ambiguous: sample(rec.results.filter((r) => r.tier === 'ambiguous').map((r) => ({ name: r.row.plazaName, candidates: r.candidates })), 100),
     fuzzyCandidates: sample(rec.results.filter((r) => r.tier === 'fuzzy_candidate').map((r) => ({ name: r.row.plazaName, similarity: r.similarity, candidates: r.candidates })), 200),
     conflicts: rec.conflicts,
+    stateReview: rec.stateHints ? summariseStateReview(rec.results) : null,
     verificationLeads: sample(verificationLeads, 200),
     datasetRecordsNotMatchedSample: sample(datasetOnly.map(brief), 50),
     notes: [
       'Report only: data/latest.json was not modified and no records were merged.',
       'Only unique exact (strict or core) name matches count as matches; fuzzy and ambiguous items need human review.',
+      'State hints (PIU/RO -> state) are learned from the unique exact matches and are review-only: they never change a tier or a match count.',
       'Aggregate counts/amounts are activity statistics; no per-vehicle toll is inferred from them.',
     ],
   };
 }
 
-module.exports = { normalizeStrict, normalizeCore, normalizeCoreNoParen, isMatch, dice, reconcile, summarise, FUZZY_THRESHOLD };
+module.exports = { stateKey, deriveStateHints, plausibleStates, applyStateHints, normalizeStrict, normalizeCore, normalizeCoreNoParen, isMatch, dice, reconcile, summarise, FUZZY_THRESHOLD };

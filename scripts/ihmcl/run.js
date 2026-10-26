@@ -38,6 +38,7 @@ function markdown(summary) {
     `- Dataset records matched uniquely: ${c.matchedUnique}; not matched: ${c.datasetRecordsNotMatched} ${JSON.stringify(c.datasetRecordsNotMatchedBySource)}`,
     `- Conflicts (one dataset record claimed by several IHMCL rows): ${c.conflicts}`,
     `- Tariff-verification leads: ${c.verificationLeads}`,
+    `- State-hint review (review-only, no match counts changed): ${JSON.stringify(c.stateReview)}; rows with no usable hint: ${c.rowsWithoutStateHint}`,
     '',
     ...summary.notes.map((n) => `- ${n}`),
     '',

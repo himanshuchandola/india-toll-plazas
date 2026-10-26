@@ -115,3 +115,85 @@ test('safety: local IHMCL folders are git-ignored and ordinary tracked paths are
   assert.equal(isGitIgnored('README.md'), false);
   assert.doesNotThrow(() => assertSafeOutput());
 });
+
+// ---- state hint (review-only) ----
+const { deriveStateHints, plausibleStates, applyStateHints } = require('../scripts/ihmcl/reconcile');
+const S = (id, name, state, extra = {}) => D(id, name, { state_name: state, ...extra });
+const RR = (name, piu, ro, car = 100) => ({ plazaName: name, piu, ro, counts: { car_jeep: car }, totalCount: car });
+// Supporting exact matches so each PIU has >=2 unique matches (SYNTHETIC, invented names).
+const SUPPORT_DS = [
+  S(101, 'Upone', 'UTTAR PRADESH'), S(102, 'Uptwo', 'UTTAR PRADESH'),
+  S(201, 'Mhone', 'MAHARASHTRA'), S(202, 'Mhtwo', 'MAHARASHTRA'),
+  S(301, 'Bhone', 'MADHYA PRADESH'), S(302, 'Bhtwo', 'MADHYA PRADESH'),
+];
+const SUPPORT_ROWS = [
+  RR('Upone', 'Pinepur', 'Northregion'), RR('Uptwo', 'Pinepur', 'Northregion'),
+  RR('Mhone', 'Cedarpur', 'Eastregion'), RR('Mhtwo', 'Cedarpur', 'Eastregion'),
+  RR('Bhone', 'Elmpur', 'Westregion'), RR('Bhtwo', 'Elmpur', 'Westregion'),
+];
+
+test('state hints: learned only from unique exact matches and need enough support', () => {
+  const { results } = reconcile(SUPPORT_ROWS, SUPPORT_DS);
+  const hints = deriveStateHints(results);
+  assert.deepEqual(plausibleStates(RR('x', 'Pinepur', 'Northregion'), hints), { source: 'piu', support: 2, states: ['UTTARPRADESH'] });
+  assert.equal(plausibleStates(RR('x', 'Unknownpiu', 'Northregion'), hints), null); // RO has only 2 matches (<3) -> no hint
+  assert.equal(plausibleStates(RR('x', 'Nowhere', 'Nowhere'), hints), null);
+});
+
+test('state hints: a same-name collision is resolved to a proposal in the plausible state, review-only', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Quillon Toll Plaza', 'MAHARASHTRA'), S(2, 'Quillon (UP)', 'UTTAR PRADESH')];
+  const rows = [...SUPPORT_ROWS, RR('Quillon Toll Plaza', 'Pinepur', 'Northregion'), RR('Quillon Toll Plaza', 'Cedarpur', 'Eastregion')];
+  const rec = reconcile(rows, ds);
+  const loni = rec.results.filter((r) => r.row.plazaName === 'Quillon Toll Plaza');
+  assert.deepEqual(loni.map((r) => r.tier), ['conflict', 'conflict']); // tiers untouched
+  const up = loni.find((r) => r.row.piu === 'Pinepur');
+  const mh = loni.find((r) => r.row.piu === 'Cedarpur');
+  assert.equal(up.stateReview.kind, 'conflict_claim_state_implausible');
+  assert.deepEqual(up.stateReview.proposals.map((p) => p.id), [2]);
+  assert.equal(mh.stateReview.kind, 'conflict_claim_state_plausible');
+  const s = summarise({ rows, reportingPeriod: null, source: {} }, ds, rec);
+  assert.equal(s.counts.matchedUnique, 6); // only the six supporting rows; hints created no matches
+});
+
+test('state hints: ambiguous names are narrowed by state; unmatched rows get proposals via token-prefix names', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Zephyr Toll Plaza', 'MADHYA PRADESH'), S(2, 'Zephyr Toll Plaza', 'RAJASTHAN'), S(3, 'Marlow TP4 (Close Loop Toll)', 'UTTAR PRADESH')];
+  const rows = [...SUPPORT_ROWS, RR('Zephyr', 'Elmpur', 'Westregion'), RR('Marlow Toll Plaza', 'Pinepur', 'Northregion')];
+  const rec = reconcile(rows, ds);
+  const sh = rec.results.find((r) => r.row.plazaName === 'Zephyr');
+  assert.equal(sh.tier, 'ambiguous');
+  assert.equal(sh.stateReview.kind, 'ambiguous_narrowed_unique');
+  assert.deepEqual(sh.stateReview.proposals.map((p) => p.id), [1]);
+  const jp = rec.results.find((r) => r.row.plazaName === 'Marlow Toll Plaza');
+  assert.equal(jp.tier, 'unmatched'); // still unmatched
+  assert.equal(jp.stateReview.kind, 'proposal_unique');
+  assert.deepEqual(jp.stateReview.proposals.map((p) => p.id), [3]);
+});
+
+test('state hints: proposals ignore dataset records already matched to another row, and wrong-state records are never proposed', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Zeta', 'UTTAR PRADESH'), S(2, 'Zeta Toll Plaza Extra', 'MAHARASHTRA')];
+  const rows = [...SUPPORT_ROWS, RR('Zeta', 'Pinepur', 'Northregion'), RR('Zeta Toll', 'Pinepur', 'Northregion')];
+  const { results } = reconcile(rows, ds);
+  const r = results.find((x) => x.row.plazaName === 'Zeta Toll');
+  assert.ok(!r.stateReview || !r.stateReview.proposals.some((p) => p.id === 1 || p.id === 2));
+});
+
+test('state hints: a unique exact match in an implausible state is flagged, but a null dataset state is not', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Kappa', 'MAHARASHTRA'), S(2, 'Lambda', null)];
+  const rows = [...SUPPORT_ROWS, RR('Kappa', 'Pinepur', 'Northregion'), RR('Lambda', 'Pinepur', 'Northregion')];
+  const { results } = reconcile(rows, ds);
+  const k = results.find((r) => r.row.plazaName === 'Kappa');
+  const l = results.find((r) => r.row.plazaName === 'Lambda');
+  assert.equal(k.tier, 'strict_exact'); // flagged, not unmatched
+  assert.equal(k.stateReview.kind, 'matched_state_mismatch');
+  assert.equal(l.stateReview, undefined);
+});
+
+test('state hints: leads built on a state-suspect match are marked in the summary', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Kappa', 'MAHARASHTRA', { car_single: null })];
+  const rows = [...SUPPORT_ROWS, RR('Kappa', 'Pinepur', 'Northregion', 500)];
+  const rec = reconcile(rows, ds);
+  const s = summarise({ rows, reportingPeriod: null, source: {} }, ds, rec);
+  assert.equal(s.verificationLeads.length, 1);
+  assert.equal(s.verificationLeads[0].matchSuspectByState, true);
+  assert.equal(s.counts.verificationLeadsWithStateSuspectMatch, 1);
+});
