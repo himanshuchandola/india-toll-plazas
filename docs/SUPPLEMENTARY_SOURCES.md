@@ -26,7 +26,7 @@ The listing's "Last Updated" label and its structured-data `dateModified` can di
 
 ## Relevance to this repo
 
-- 21597 (plaza master) is the only one that could reconcile plaza codes, names and coordinates. It has 1,452 rows against 1,209 NHAI-sourced records here, which is why a reconciliation report would be useful once the file is legitimately in hand.
+- 21597 (plaza master) is the only one that could reconcile plaza codes, names and coordinates. It has 1,452 rows against 1,236 NHAI-sourced records in `data/latest.json` (as of 2026-10-26), which is why a reconciliation report would be useful once the file is legitimately in hand.
 - 21607 / 19664 / 21608 / 23755 are **aggregate activity statistics**. They must stay separate from tariffs: a per-vehicle toll cannot be inferred from aggregate amounts collected, and they must never overwrite curated state-highway or expressway rates.
 - 399 and 18246 are payment-system statistics with no per-plaza tariff relevance.
 
