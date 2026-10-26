@@ -19,7 +19,7 @@ function normalizeCoreNoParen(name) {
   return normalizeCore(String(name || '').replace(/\([^)]*\)/g, ' '));
 }
 
-const MATCH_TIERS = new Set(['strict_exact', 'core_exact', 'core_no_paren_exact']);
+const MATCH_TIERS = new Set(['strict_exact', 'core_exact', 'core_no_paren_exact', 'alias_match']);
 const isMatch = (tier) => MATCH_TIERS.has(tier);
 
 function bigrams(s) {
@@ -59,7 +59,20 @@ function brief(r) { return { id: r.tollplaza_id, name: String(r.tollplaza_name).
  *  fuzzy_candidate - best bigram similarity >= threshold, review only
  *  unmatched
  */
-function reconcile(ihmclRows, datasetRecords) {
+function aliasKey(name, piu) { return `${normalizeStrict(name)}|${String(piu || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()}`; }
+
+/**
+ * `aliases`: explicit, human-approved overrides [{ ihmclName, piu, datasetId, basis }]. An alias fixes one IHMCL row
+ * (name + PIU) to one dataset record. It is reported as its own tier (alias_match), never merged into the dataset,
+ * and an alias pointing at a dataset id that does not exist is an error, not silently ignored.
+ */
+function reconcile(ihmclRows, datasetRecords, aliases = []) {
+  const byDatasetId = new Map(datasetRecords.map((d) => [d.tollplaza_id, d]));
+  const aliasIdx = new Map();
+  for (const a of aliases) {
+    if (!byDatasetId.has(a.datasetId)) throw new Error(`Alias for "${a.ihmclName}" points at unknown dataset id ${a.datasetId}`);
+    aliasIdx.set(aliasKey(a.ihmclName, a.piu), a);
+  }
   const strictIdx = indexBy(datasetRecords, normalizeStrict);
   const coreIdx = indexBy(datasetRecords, normalizeCore);
   const noParenIdx = indexBy(datasetRecords, normalizeCoreNoParen);
@@ -67,8 +80,15 @@ function reconcile(ihmclRows, datasetRecords) {
   const results = [];
   const matchedIds = new Map(); // dataset id -> ihmcl row names that matched it
 
-  // Pass 1: exact tiers only.
+  // Pass 1: exact tiers only (rows with an alias take the alias instead).
   for (const row of ihmclRows) {
+    const alias = aliasIdx.get(aliasKey(row.plazaName, row.piu));
+    if (alias) {
+      const rec = byDatasetId.get(alias.datasetId);
+      results.push({ row, tier: 'alias_match', candidates: [brief(rec)], aliasBasis: alias.basis || null, _core: normalizeCore(row.plazaName) });
+      matchedIds.set(alias.datasetId, [...(matchedIds.get(alias.datasetId) || []), row.plazaName]);
+      continue;
+    }
     const strict = normalizeStrict(row.plazaName);
     const core = normalizeCore(row.plazaName);
     let tier = 'unmatched';
@@ -134,7 +154,7 @@ function deriveStateHints(results) {
   const piu = new Map(); const ro = new Map();
   const add = (m, k, st) => { if (!k || !st) return; const e = m.get(k) || new Map(); e.set(st, (e.get(st) || 0) + 1); m.set(k, e); };
   for (const r of results) {
-    if (!isMatch(r.tier)) continue;
+    if (!isMatch(r.tier) || r.tier === 'alias_match') continue; // aliases came from hints; do not feed them back
     const st = stateKey(r.candidates[0].state);
     add(piu, labelKey(r.row.piu), st);
     add(ro, labelKey(r.row.ro), st);
@@ -188,6 +208,7 @@ function applyStateHints(results, datasetRecords) {
   let noHint = 0;
 
   for (const r of results) {
+    if (r.tier === 'alias_match') continue;
     const plaus = plausibleStates(r.row, hints, isMatch(r.tier) ? stateKey(r.candidates[0].state) : null);
     if (!plaus || !plaus.states.length) { noHint++; continue; }
     const evidence = { hintSource: plaus.source, support: plaus.support, plausibleStates: plaus.states };
@@ -263,12 +284,14 @@ function summarise(ihmclParsed, datasetRecords, rec) {
       conflicts: rec.conflicts.length,
       verificationLeads: verificationLeads.length,
       verificationLeadsWithStateSuspectMatch: verificationLeads.filter((l) => l.matchSuspectByState).length,
+      aliasMatches: rec.results.filter((r) => r.tier === 'alias_match').length,
       stateReview: rec.stateHints ? rec.stateHints.counts : {},
       rowsWithoutStateHint: rec.stateHints ? rec.stateHints.rowsWithoutHint : null,
     },
     unmatchedIhmcl: sample(rec.results.filter((r) => r.tier === 'unmatched').map((r) => ({ name: r.row.plazaName, piu: r.row.piu, ro: r.row.ro, totalCount: r.row.totalCount })), 200),
     ambiguous: sample(rec.results.filter((r) => r.tier === 'ambiguous').map((r) => ({ name: r.row.plazaName, candidates: r.candidates })), 100),
     fuzzyCandidates: sample(rec.results.filter((r) => r.tier === 'fuzzy_candidate').map((r) => ({ name: r.row.plazaName, similarity: r.similarity, candidates: r.candidates })), 200),
+    aliasesApplied: rec.results.filter((r) => r.tier === 'alias_match').map((r) => ({ ihmclName: r.row.plazaName.trim(), piu: r.row.piu, datasetId: r.candidates[0].id, datasetName: r.candidates[0].name, basis: r.aliasBasis })),
     conflicts: rec.conflicts,
     stateReview: rec.stateHints ? summariseStateReview(rec.results) : null,
     verificationLeads: sample(verificationLeads, 200),
@@ -276,6 +299,7 @@ function summarise(ihmclParsed, datasetRecords, rec) {
     notes: [
       'Report only: data/latest.json was not modified and no records were merged.',
       'Only unique exact (strict or core) name matches count as matches; fuzzy and ambiguous items need human review.',
+      'alias_match rows come from the local aliases file (human-approved overrides); they are counted separately and never edit the dataset.',
       'State hints (PIU/RO -> state) are learned from the unique exact matches and are review-only: they never change a tier or a match count.',
       'Aggregate counts/amounts are activity statistics; no per-vehicle toll is inferred from them.',
     ],

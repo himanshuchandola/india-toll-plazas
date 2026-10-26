@@ -197,3 +197,34 @@ test('state hints: leads built on a state-suspect match are marked in the summar
   assert.equal(s.verificationLeads[0].matchSuspectByState, true);
   assert.equal(s.counts.verificationLeadsWithStateSuspectMatch, 1);
 });
+
+// ---- aliases (explicit local overrides) ----
+test('aliases: override the exact tier, resolve a same-name conflict, and are reported as their own tier', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Quillon Toll Plaza', 'MAHARASHTRA'), S(2, 'Quillon (UP)', 'UTTAR PRADESH')];
+  const rows = [...SUPPORT_ROWS, RR('Quillon Toll Plaza', 'Pinepur', 'Northregion'), RR('Quillon Toll Plaza', 'Cedarpur', 'Eastregion')];
+  const aliases = [{ ihmclName: 'Quillon Toll Plaza', piu: 'Pinepur', datasetId: 2, basis: 'test' }];
+  const rec = reconcile(rows, ds, aliases);
+  const up = rec.results.find((r) => r.row.piu === 'Pinepur' && r.row.plazaName === 'Quillon Toll Plaza');
+  const mh = rec.results.find((r) => r.row.piu === 'Cedarpur' && r.row.plazaName === 'Quillon Toll Plaza');
+  assert.equal(up.tier, 'alias_match');
+  assert.equal(up.candidates[0].id, 2);
+  assert.equal(mh.tier, 'strict_exact'); // the other row keeps its own exact match, so the conflict is gone
+  assert.deepEqual(rec.conflicts, []);
+  const s = summarise({ rows, reportingPeriod: null, source: {} }, ds, rec);
+  assert.equal(s.counts.aliasMatches, 1);
+  assert.deepEqual(s.aliasesApplied.map((a) => [a.datasetId, a.basis]), [[2, 'test']]);
+});
+
+test('aliases: an alias to an unknown dataset id is an error, never silently ignored', () => {
+  assert.throws(() => reconcile([RR('Anything', 'P', 'R')], [D(1, 'Alpha')], [{ ihmclName: 'Anything', piu: 'P', datasetId: 999 }]), /unknown dataset id 999/);
+});
+
+test('aliases: only the named row (name + PIU) is affected, and aliases are not fed back into state hints', () => {
+  const ds = [...SUPPORT_DS, S(1, 'Nuvo', 'UTTAR PRADESH')];
+  const rows = [...SUPPORT_ROWS, RR('Nuvo', 'Pinepur', 'Northregion'), RR('Nuvo', 'Otherpiu', 'Otherro')];
+  const rec = reconcile(rows, ds, [{ ihmclName: 'Nuvo', piu: 'Pinepur', datasetId: 1 }]);
+  assert.equal(rec.results.find((r) => r.row.piu === 'Pinepur' && r.row.plazaName === 'Nuvo').tier, 'alias_match');
+  assert.notEqual(rec.results.find((r) => r.row.piu === 'Otherpiu').tier, 'alias_match');
+  const hints = deriveStateHints(rec.results);
+  assert.equal(hints.piu.get('pinepur').get('UTTARPRADESH'), 2); // the two supporting matches only; the alias row did not add a third
+});

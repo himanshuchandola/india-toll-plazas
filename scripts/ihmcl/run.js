@@ -10,6 +10,11 @@ const { execFileSync } = require('child_process');
 const { parseVcWisePdf } = require('./parseVcWise');
 const { reconcile, summarise } = require('./reconcile');
 
+function loadAliases() {
+  const f = path.join(LOCAL, 'aliases.json'); // local, git-ignored, human-approved overrides
+  return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : [];
+}
+
 const ROOT = path.resolve(__dirname, '..', '..');
 const LOCAL = path.join(ROOT, 'data', 'local', 'ihmcl');
 
@@ -37,6 +42,7 @@ function markdown(summary) {
     `- Match tiers: ${JSON.stringify(c.tiers)}`,
     `- Dataset records matched uniquely: ${c.matchedUnique}; not matched: ${c.datasetRecordsNotMatched} ${JSON.stringify(c.datasetRecordsNotMatchedBySource)}`,
     `- Conflicts (one dataset record claimed by several IHMCL rows): ${c.conflicts}`,
+    `- Alias matches applied from local aliases.json: ${c.aliasMatches}`,
     `- Tariff-verification leads: ${c.verificationLeads}`,
     `- State-hint review (review-only, no match counts changed): ${JSON.stringify(c.stateReview)}; rows with no usable hint: ${c.rowsWithoutStateHint}`,
     '',
@@ -64,7 +70,7 @@ function main() {
     const parsed = parseVcWisePdf(path.join(inbox, f));
     const tag = parsed.reportingPeriod ? parsed.reportingPeriod.period : path.basename(f, '.pdf');
     fs.writeFileSync(path.join(LOCAL, 'parsed', `${tag}.json`), JSON.stringify(parsed, null, 1));
-    const summary = summarise(parsed, dataset, reconcile(parsed.rows, dataset));
+    const summary = summarise(parsed, dataset, reconcile(parsed.rows, dataset, loadAliases()));
     fs.writeFileSync(path.join(LOCAL, 'reports', `reconciliation-${tag}.json`), JSON.stringify(summary, null, 1));
     fs.writeFileSync(path.join(LOCAL, 'reports', `reconciliation-${tag}.md`), markdown(summary));
     console.log(markdown(summary));
