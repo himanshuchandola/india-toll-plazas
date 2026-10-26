@@ -224,7 +224,8 @@ test('aliases: only the named row (name + PIU) is affected, and aliases are not 
   const rows = [...SUPPORT_ROWS, RR('Nuvo', 'Pinepur', 'Northregion'), RR('Nuvo', 'Otherpiu', 'Otherro')];
   const rec = reconcile(rows, ds, [{ ihmclName: 'Nuvo', piu: 'Pinepur', datasetId: 1 }]);
   assert.equal(rec.results.find((r) => r.row.piu === 'Pinepur' && r.row.plazaName === 'Nuvo').tier, 'alias_match');
-  assert.notEqual(rec.results.find((r) => r.row.piu === 'Otherpiu').tier, 'alias_match');
+  assert.equal(rec.results.find((r) => r.row.piu === 'Otherpiu').tier, 'conflict'); // exact row colliding with an aliased record is the conflict
+  assert.deepEqual(rec.conflicts.map((c) => c.datasetId), [1]);
   const hints = deriveStateHints(rec.results);
   assert.equal(hints.piu.get('pinepur').get('UTTARPRADESH'), 2); // the two supporting matches only; the alias row did not add a third
 });

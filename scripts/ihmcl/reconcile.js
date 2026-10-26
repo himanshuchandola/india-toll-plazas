@@ -133,7 +133,7 @@ function reconcile(ihmclRows, datasetRecords, aliases = []) {
   const conflicts = [...matchedIds.entries()].filter(([, names]) => names.length > 1).map(([id, names]) => ({ datasetId: id, ihmclNames: names }));
   const conflictIds = new Set(conflicts.map((c) => c.datasetId));
   for (const r of results) {
-    if (isMatch(r.tier) && conflictIds.has(r.candidates[0].id)) r.tier = 'conflict';
+    if (isMatch(r.tier) && r.tier !== 'alias_match' && conflictIds.has(r.candidates[0].id)) r.tier = 'conflict'; // an alias is an explicit decision and stays authoritative; the colliding exact row is the conflict
   }
   const stateHints = applyStateHints(results, datasetRecords);
   return { results, conflicts, stateHints };
