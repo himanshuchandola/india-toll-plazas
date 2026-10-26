@@ -79,7 +79,7 @@ Complete documentation of all fields in the toll plaza dataset.
 - `hcm_commercial` - Commercial/registered (e.g., 195)
 
 **Rate Value Type**: String (representing INR amount)  
-**Null Handling**: `null` when rate data is unavailable
+**Null Handling**: `null` (or an empty string `""`) when rate data is unavailable: this means **missing, not zero**. A value of `"0"` is a zero the source reported; it may mean exempt or not applicable, so do not assume the plaza is free.
 
 ### Rate Information
 
@@ -153,9 +153,16 @@ Consumers that compute a route's highway toll should **not** add the rates of `c
 
 When working with the data:
 
-- **Numeric rates**: Parse strings as floats/integers
+- **Numeric rates**: Parse strings to numbers, but keep missing as `null` (never convert it to `0`)
   ```javascript
-  const rate = parseFloat(plaza.car_single); // 75
+  // null / undefined / "" = missing. "0" = a zero the source reported. Unreadable text (e.g. "16+5") is treated as missing.
+  function parseRate(value) {
+    if (value === null || value === undefined || String(value).trim() === '') return null;
+    const n = Number(value);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  const rate = parseRate(plaza.car_single); // 75, or null when missing
   ```
 
 - **Coordinates**: Parse as floats for mapping
@@ -175,11 +182,16 @@ Fields are set to `null` when:
 - Field doesn't apply to that toll plaza type
 - Data confidence is "partial" (state highways)
 
-Always check for `null` before using a field:
+Always check for `null` (and `""`) before using a field. **Never turn a missing rate into `0`**: a missing toll is unknown, not free, and a `0` would silently under-state any total.
 
 ```javascript
 const contractor = plaza.contractor_name ?? "Not available";
-const rate = plaza.car_single ? parseFloat(plaza.car_single) : 0;
+const rate = parseRate(plaza.car_single); // number, or null = unknown (see parseRate above)
+if (rate === null) {
+  // show "rate not published", do not substitute 0
+} else if (rate === 0) {
+  // the source reported 0: may mean exempt or not applicable; do not assume the plaza is free
+}
 ```
 
 ## Example Record (NHAI - Complete Data)
@@ -359,22 +371,30 @@ const completePlazas = data.filter(p => p.data_confidence === 'complete');
 ```javascript
 const plaza = data.find(p => p.tollplaza_id === 305);
 if (plaza) {
+  // Each value is a number or null (missing). Keep null as null; see parseRate above.
   const rates = {
-    single: parseFloat(plaza.car_single),
-    return: parseFloat(plaza.car_return),
-    monthly: parseFloat(plaza.car_monthly),
-    commercial: parseFloat(plaza.car_commercial)
+    single: parseRate(plaza.car_single),
+    return: parseRate(plaza.car_return),
+    monthly: parseRate(plaza.car_monthly),
+    commercial: parseRate(plaza.car_commercial)
   };
 }
 ```
 
-### Calculate total toll revenue potential
+### Sum the published car single rates for a set of plazas
+
+Single-journey rates are per crossing, so a sum is only meaningful for a chosen set (for example the plazas on one route), and it is not "revenue". Count missing rates as unknown and report them next to the sum; never add them as `0`.
 
 ```javascript
-const totalRevenue = data.reduce((sum, plaza) => {
-  const singleTrips = plaza.car_single ? parseFloat(plaza.car_single) : 0;
-  return sum + singleTrips;
-}, 0);
+const chosen = data.filter(p => p.state_name === 'RAJASTHAN');
+let total = 0, known = 0, unknown = 0;
+for (const plaza of chosen) {
+  const rate = parseRate(plaza.car_single); // see parseRate above
+  if (rate === null) unknown++;
+  else { known++; total += rate; }
+}
+// `total` covers only the `known` plazas. `unknown` plazas have no published rate,
+// so `total` is a partial figure, not the full toll.
 ```
 
 ---
