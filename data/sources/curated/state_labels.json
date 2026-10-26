@@ -47,7 +47,7 @@
       "state_name": "UTTAR PRADESH",
       "expected_current_state": "DELHI",
       "plaza_name": "Rasoolpur (DME Close Loop Toll)",
-      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Uttar Pradesh. Ghaziabad, Uttar Pradesh; 4/5 nearest plazas Uttar Pradesh. Coordinates are identical to id 1080 (Rasoolpur Sikrod, EPE): possible duplicate, NOT merged. Coordinates-based only; the IHMCL PIU hint is weak.",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Uttar Pradesh (Ghaziabad). Coordinates-based only; the IHMCL PIU hint is weak. Note: id 1080 (Rasoolpur Sikrod) has identical coordinates, location, chainage and contractor but a different NHAI code (520033 vs 320102). That is consistent with two NHAI entry/exit records geocoded to one point, so it is not treated as a duplicate and nothing is merged.",
       "confirmed_against_official_source": false
     },
     "id:881": {
