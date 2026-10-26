@@ -76,6 +76,44 @@ function loadCuratedOverrides(sourcesDir) {
   return { plazas: merged, fileCount };
 }
 
+/**
+ * Hand-curated state_name corrections (data/sources/curated/state_labels.json). Only `state_name` may be changed.
+ * A correction applies only while the upstream value still equals `expected_current_state`: if upstream has changed
+ * the value (for example NHAI fixed it) the override is skipped and reported, so it can never clobber a newer fix.
+ */
+function loadStateLabelOverrides(sourcesDir) {
+  const file = path.join(sourcesDir, 'curated', 'state_labels.json');
+  if (!fs.existsSync(file)) return {};
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8')).plazas || {};
+  } catch (err) {
+    console.warn(`Skipping malformed curated state_labels.json: ${err.message}`);
+    return {};
+  }
+}
+
+function applyStateLabelOverrides(combined, overrides) {
+  const result = { applied: [], alreadyCorrect: [], skippedChanged: [], notFound: [] };
+  const seen = new Set();
+  for (const entry of combined) {
+    const key = [`code:${entry.tollplaza_code}`, `id:${entry.tollplaza_id}`].find((k) => Object.prototype.hasOwnProperty.call(overrides, k));
+    if (!key) continue;
+    seen.add(key);
+    const cur = overrides[key];
+    if (!cur || typeof cur.state_name !== 'string' || !cur.state_name.trim()) continue;
+    const have = entry.state_name == null ? null : String(entry.state_name).trim();
+    if (have === cur.state_name.trim()) { result.alreadyCorrect.push(key); continue; }
+    if (cur.expected_current_state != null && have !== String(cur.expected_current_state).trim()) {
+      result.skippedChanged.push({ key, current: have, expected: cur.expected_current_state });
+      continue;
+    }
+    entry.state_name = cur.state_name.trim();
+    result.applied.push(key);
+  }
+  for (const key of Object.keys(overrides)) if (!seen.has(key)) result.notFound.push(key);
+  return result;
+}
+
 async function mergeDataSources(options = {}) {
   const maxDropRatio = options.maxDropRatio ?? 0.15;
   try {
@@ -120,6 +158,15 @@ async function mergeDataSources(options = {}) {
         }
       }
       console.log(`Applied curated rate corrections to ${corrected} plaza(s) (${Object.keys(curated).length} curated across ${fileCount} file(s))`);
+    }
+
+    // Hand-curated state label corrections (state_name only), guarded so they never override a newer upstream value.
+    const stateOverrides = loadStateLabelOverrides(sourcesDir);
+    if (Object.keys(stateOverrides).length > 0) {
+      const r = applyStateLabelOverrides(combined, stateOverrides);
+      console.log(`State label corrections: ${r.applied.length} applied, ${r.alreadyCorrect.length} already correct upstream, ${r.skippedChanged.length} skipped (upstream value changed), ${r.notFound.length} not found`);
+      for (const k of r.skippedChanged) console.warn(`  state label override for ${k.key} skipped: upstream is now "${k.current}" (expected "${k.expected}") - review or remove the override`);
+      for (const k of r.alreadyCorrect) console.warn(`  state label override for ${k} is now redundant (upstream already correct) - can be removed`);
     }
 
     // Sort by state, then by location (KM marker)
@@ -189,3 +236,5 @@ if (require.main === module) {
 module.exports = mergeDataSources;
 module.exports.mergeDataSources = mergeDataSources;
 module.exports.applyCuratedRates = applyCuratedRates;
+module.exports.applyStateLabelOverrides = applyStateLabelOverrides;
+module.exports.loadStateLabelOverrides = loadStateLabelOverrides;

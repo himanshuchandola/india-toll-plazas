@@ -21,8 +21,8 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
-| Shirpur | 3 (New 52) | (Village)Burakayalakota , (District)Annamaya , Andhra Pradesh, 517351 | [21.319718, 74.889291](https://www.google.com/maps?q=21.319718,74.889291) | 140 | complete |
 | Mandir Hasaud | 6 (New NH-53) | Ch. 258.650 | [21.23198, 81.7591667](https://www.google.com/maps?q=21.23198,81.7591667) | 65 | complete |
+| Baiji Toll Plaza | 30  (NH-12A) | 200.100 | [21.771229, 81.502337](https://www.google.com/maps?q=21.771229,81.502337) | 65 | complete |
 | Masora | 30 | 216.4 | [19.662176, 81.658696](https://www.google.com/maps?q=19.662176,81.658696) | 65 | complete |
 | Badaiyiguda | 30 | 284.42 | [19.161402, 81.98472](https://www.google.com/maps?q=19.161402,81.98472) | 60 | complete |
 | Mudiyapara | 30 | Ch 225.942 | [22.092115, 81.134289](https://www.google.com/maps?q=22.092115,81.134289) | 50 | complete |

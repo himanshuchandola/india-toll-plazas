@@ -50,6 +50,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Gurhe(Chowikiman) | 95 | 104.58 | [30.824455, 75.590539](https://www.google.com/maps?q=30.824455,75.590539) | 70 | complete |
 | Darapur | 95 | 164 | [30.840280, 74.976308](https://www.google.com/maps?q=30.840280,74.976308) | 65 | complete |
 | Ferozeshah | 95 | 183.73 | [30.8695, 74.7731](https://www.google.com/maps?q=30.8695,74.7731) | 35 | complete |
+| Ghulal |  95 | 60 | [30.84737, 76.13282](https://www.google.com/maps?q=30.84737,76.13282) | 115 | complete |
 | Chahar | 95 | Km 12.200 | [30.9887, 75.7908](https://www.google.com/maps?q=30.9887,75.7908) | 40 | complete |
 | Chhotian | 148B | Chhotian | [29.829659, 75.785717](https://www.google.com/maps?q=29.829659,75.785717) | 55 | complete |
 | Dappar (Ambala Chandigarh ) | 152 | Km 23.080 | [30.527449, 76.813037](https://www.google.com/maps?q=30.527449,76.813037) | 50 | complete |
@@ -61,7 +62,6 @@ What "confidence" means, so you know how much to trust a given rate:
 | Kurali (Behrampur) | 205 | Km 35.000 | [30.908140, 76.542771](https://www.google.com/maps?q=30.908140,76.542771) | 60 | complete |
 | Bachhuan | 344 | Bacchuan Km 70.240 | [31.014469, 76.389203](https://www.google.com/maps?q=31.014469,76.389203) | 65 | complete |
 | Behram | 344 | Behram at Km 15.300 | [31.204433, 75.876799](https://www.google.com/maps?q=31.204433,75.876799) | 105 | complete |
-| Chandi Toll Plaza | 352 |  | [29.007097, 76.508305](https://www.google.com/maps?q=29.007097,76.508305) | 90 | complete |
 | Manan | 354 | 200.100 | [31.516036, 74.800179](https://www.google.com/maps?q=31.516036,74.800179) | 50 | complete |
 | Kala Tibba | 354 E | Kala Tibba | [30.1043537, 74.26151](https://www.google.com/maps?q=30.1043537,74.26151) | 50 | complete |
 | Bhagupur | 703 B | 200.100 | [31.250049, 74.827552](https://www.google.com/maps?q=31.250049,74.827552) | 40 | complete |

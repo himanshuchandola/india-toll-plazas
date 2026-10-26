@@ -1,0 +1,61 @@
+{
+  "_comment": "Hand-curated state_name corrections where a plaza's own coordinates, its neighbours and the IHMCL PIU/RO place it in a different state than the upstream label. Applied by merge.js on every run. A correction applies only while the upstream value still equals expected_current_state, so it never overrides an upstream fix. Not yet confirmed against NHAI/official sources: see confirmed_against_official_source. Only state_name may be set here.",
+  "plazas": {
+    "id:1238": {
+      "state_name": "HARYANA",
+      "expected_current_state": "PUNJAB",
+      "plaza_name": "Chandi Toll Plaza",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Haryana. Rohtak, Haryana; 5/5 nearest plazas Haryana; IHMCL lists it under PIU Sonepat (Haryana).",
+      "confirmed_against_official_source": false
+    },
+    "id:1147": {
+      "state_name": "CHHATTISGARH",
+      "expected_current_state": "MADHYA PRADESH",
+      "plaza_name": "Baiji Toll Plaza",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Chhattisgarh. Bemetara, Chhattisgarh; 5/5 nearest plazas Chhattisgarh; IHMCL lists it under PIU Bilaspur (Chhattisgarh).",
+      "confirmed_against_official_source": false
+    },
+    "id:1230": {
+      "state_name": "ANDHRA PRADESH",
+      "expected_current_state": "TAMIL NADU",
+      "plaza_name": "Sameerapalem Toll Plaza",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Andhra Pradesh. Markapuram, Andhra Pradesh; 5/5 nearest plazas Andhra Pradesh; the record's own location text says SPSR Nellore; IHMCL lists it under PIU Ongole (Andhra).",
+      "confirmed_against_official_source": false
+    },
+    "id:806": {
+      "state_name": "TELANGANA",
+      "expected_current_state": "ANDHRA PRADESH",
+      "plaza_name": "Singarenipalli",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Telangana. Suryapet, Telangana; 4/5 nearest plazas Telangana; IHMCL lists it under PIU Khammam-2 (Telangana).",
+      "confirmed_against_official_source": false
+    },
+    "id:518": {
+      "state_name": "PUNJAB",
+      "expected_current_state": "HARYANA",
+      "plaza_name": "Ghulal",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Punjab. Ludhiana, Punjab; 5/5 nearest plazas Punjab; IHMCL lists it under PIU Chandigarh (Punjab group).",
+      "confirmed_against_official_source": false
+    },
+    "id:115": {
+      "state_name": "MAHARASHTRA",
+      "expected_current_state": "CHHATTISGARH",
+      "plaza_name": "Shirpur",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Maharashtra. Dhule, Maharashtra; 4/5 nearest plazas Maharashtra; IHMCL lists it under PIU Dhule (Maharashtra). The record location text (Andhra village/district) is also inconsistent and is NOT corrected here.",
+      "confirmed_against_official_source": false
+    },
+    "id:737": {
+      "state_name": "UTTAR PRADESH",
+      "expected_current_state": "DELHI",
+      "plaza_name": "Rasoolpur (DME Close Loop Toll)",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Uttar Pradesh. Ghaziabad, Uttar Pradesh; 4/5 nearest plazas Uttar Pradesh. Coordinates are identical to id 1080 (Rasoolpur Sikrod, EPE): possible duplicate, NOT merged. Coordinates-based only; the IHMCL PIU hint is weak.",
+      "confirmed_against_official_source": false
+    },
+    "id:881": {
+      "state_name": "HARYANA",
+      "expected_current_state": "DELHI",
+      "plaza_name": "Chhajju Nagar(EPE) Close Loop Toll",
+      "evidence": "Coordinates, the 5 nearest dataset plazas and an OpenStreetMap reverse-geocode (2026-10-26) place it in Haryana. Palwal, Haryana (nearest plazas mixed Haryana/Delhi/UP). Coordinates-based only; the IHMCL PIU hint is weak.",
+      "confirmed_against_official_source": false
+    }
+  }
+}

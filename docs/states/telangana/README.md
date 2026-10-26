@@ -1,8 +1,8 @@
 # Toll plazas in Telangana — India
 
-Browse **67 FASTag toll plazas** across 13 national highways in Telangana. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **68 FASTag toll plazas** across 14 national highways in Telangana. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 32 complete, 35 partial · **Last updated:** 2026-10-26
+**Coverage:** 33 complete, 35 partial · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,8 +17,8 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 32 | 47.8% |
-| partial | 35 | 52.2% |
+| complete | 33 | 48.5% |
+| partial | 35 | 51.5% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -47,6 +47,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Mandamarri Toll Plaza | 363 | MANDAMARRI | [19.011289 ,  79.478191](https://www.google.com/maps?q=19.011289 , 79.478191) | 95 | complete |
 | Kothagudem | 365 | 42.950 Km | [17.406428, 79.6421309](https://www.google.com/maps?q=17.406428,79.6421309) | 80 | complete |
 | Chinthapally | 365 | 99.75 | [17.471578, 79.980527](https://www.google.com/maps?q=17.471578,79.980527) | 45 | complete |
+| Singarenipalli | 365 BB | KM 37.400 | [17.191787, 79.871305](https://www.google.com/maps?q=17.191787,79.871305) | 125 | complete |
 | Yerkaram | 365 B | Km 72.215 | [17.14501, 79.34495](https://www.google.com/maps?q=17.14501,79.34495) | 45 | complete |
 | Muthojipet | 365 | Muthojipet | [18.002244, 79.903564](https://www.google.com/maps?q=18.002244,79.903564) | 30 | complete |
 | Singarajupally | 365 B | Singarajupally | [17.590143, 79.276497](https://www.google.com/maps?q=17.590143,79.276497) | 40 | complete |

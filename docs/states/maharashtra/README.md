@@ -1,8 +1,8 @@
 # Toll plazas in Maharashtra — India
 
-Browse **205 FASTag toll plazas** across 49 national highways in Maharashtra. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **206 FASTag toll plazas** across 49 national highways in Maharashtra. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 107 complete, 96 partial, 2 verified · **Last updated:** 2026-10-26
+**Coverage:** 108 complete, 96 partial, 2 verified · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -18,11 +18,12 @@ What "confidence" means, so you know how much to trust a given rate:
 | Confidence | Plazas | Share |
 |---|---|---|
 | verified | 2 | 1.0% |
-| complete | 107 | 52.2% |
-| partial | 96 | 46.8% |
+| complete | 108 | 52.4% |
+| partial | 96 | 46.6% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
+| Shirpur | 3 (New 52) | (Village)Burakayalakota , (District)Annamaya , Andhra Pradesh, 517351 | [21.319718, 74.889291](https://www.google.com/maps?q=21.319718,74.889291) | 140 | complete |
 | Songir | 3 (New 52) | (Village)Burakayalakota , (District)Annamaya , Andhra Pradesh, 517351 | [21.050995, 74.785116](https://www.google.com/maps?q=21.050995,74.785116) | 90 | complete |
 | Kusgaon (Close Loop Toll ) | 4 [New NH-48] |  | [18.760253, 73.439713](https://www.google.com/maps?q=18.760253,73.439713) |  | complete |
 | Dehuroad  (Close Loop Toll ) | 4 [New NH-48] |  | [18.700286, 73.692154](https://www.google.com/maps?q=18.700286,73.692154) |  | complete |

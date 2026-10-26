@@ -40,30 +40,30 @@ Browse individual state pages below, or jump straight to [docs/states/](docs/sta
 <!-- STATE_TABLE:START -->
 | State | Plazas | Highways | Confidence (c/p/v) | Updated | Browse |
 |---|---|---|---|---|---|
-| [Andhra Pradesh](docs/states/andhra-pradesh/README.md) | 111 | 40 | 102c / 9p | 2026-10-26 | [Browse](docs/states/andhra-pradesh/README.md) |
+| [Andhra Pradesh](docs/states/andhra-pradesh/README.md) | 111 | 39 | 102c / 9p | 2026-10-26 | [Browse](docs/states/andhra-pradesh/README.md) |
 | [Assam](docs/states/assam/README.md) | 12 | 8 | 12c | 2026-10-26 | [Browse](docs/states/assam/README.md) |
 | [Bihar](docs/states/bihar/README.md) | 44 | 21 | 44c | 2026-10-26 | [Browse](docs/states/bihar/README.md) |
 | [Chhattisgarh](docs/states/chhattisgarh/README.md) | 26 | 10 | 26c | 2026-10-26 | [Browse](docs/states/chhattisgarh/README.md) |
-| [Delhi](docs/states/delhi/README.md) | 21 | 11 | 21c | 2026-10-26 | [Browse](docs/states/delhi/README.md) |
+| [Delhi](docs/states/delhi/README.md) | 19 | 10 | 19c | 2026-10-26 | [Browse](docs/states/delhi/README.md) |
 | [Goa](docs/states/goa/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/goa/README.md) |
 | [Gujarat](docs/states/gujarat/README.md) | 97 | 25 | 64c / 33p | 2026-10-26 | [Browse](docs/states/gujarat/README.md) |
-| [Haryana](docs/states/haryana/README.md) | 87 | 27 | 71c / 16p | 2026-10-26 | [Browse](docs/states/haryana/README.md) |
+| [Haryana](docs/states/haryana/README.md) | 88 | 28 | 72c / 16p | 2026-10-26 | [Browse](docs/states/haryana/README.md) |
 | [Himachal Pradesh](docs/states/himachal-pradesh/README.md) | 15 | 4 | 4c / 11p | 2026-10-26 | [Browse](docs/states/himachal-pradesh/README.md) |
 | [Jammu & Kashmir](docs/states/jammu-kashmir/README.md) | 8 | 2 | 8c | 2026-10-26 | [Browse](docs/states/jammu-kashmir/README.md) |
 | [Jharkhand](docs/states/jharkhand/README.md) | 24 | 11 | 23c / 1p | 2026-10-26 | [Browse](docs/states/jharkhand/README.md) |
 | [Karnataka](docs/states/karnataka/README.md) | 68 | 26 | 68c | 2026-10-26 | [Browse](docs/states/karnataka/README.md) |
 | [Kerala](docs/states/kerala/README.md) | 12 | 5 | 12c | 2026-10-26 | [Browse](docs/states/kerala/README.md) |
-| [Madhya Pradesh](docs/states/madhya-pradesh/README.md) | 110 | 54 | 110c | 2026-10-26 | [Browse](docs/states/madhya-pradesh/README.md) |
-| [Maharashtra](docs/states/maharashtra/README.md) | 205 | 49 | 107c / 96p / 2v | 2026-10-26 | [Browse](docs/states/maharashtra/README.md) |
+| [Madhya Pradesh](docs/states/madhya-pradesh/README.md) | 109 | 53 | 109c | 2026-10-26 | [Browse](docs/states/madhya-pradesh/README.md) |
+| [Maharashtra](docs/states/maharashtra/README.md) | 206 | 49 | 108c / 96p / 2v | 2026-10-26 | [Browse](docs/states/maharashtra/README.md) |
 | [Meghalaya](docs/states/meghalaya/README.md) | 4 | 1 | 4c | 2026-10-26 | [Browse](docs/states/meghalaya/README.md) |
 | [Odisha](docs/states/odisha/README.md) | 39 | 17 | 36c / 3p | 2026-10-26 | [Browse](docs/states/odisha/README.md) |
 | [Punjab](docs/states/punjab/README.md) | 48 | 24 | 48c | 2026-10-26 | [Browse](docs/states/punjab/README.md) |
 | [Punjab & Haryana (mixed)](docs/states/punjab-haryana/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/punjab-haryana/README.md) |
 | [Rajasthan](docs/states/rajasthan/README.md) | 394 | 57 | 174c / 216p / 4v | 2026-10-26 | [Browse](docs/states/rajasthan/README.md) |
-| [Tamil Nadu](docs/states/tamil-nadu/README.md) | 108 | 41 | 85c / 23p | 2026-10-26 | [Browse](docs/states/tamil-nadu/README.md) |
-| [Telangana](docs/states/telangana/README.md) | 67 | 13 | 32c / 35p | 2026-10-26 | [Browse](docs/states/telangana/README.md) |
+| [Tamil Nadu](docs/states/tamil-nadu/README.md) | 107 | 40 | 84c / 23p | 2026-10-26 | [Browse](docs/states/tamil-nadu/README.md) |
+| [Telangana](docs/states/telangana/README.md) | 68 | 14 | 33c / 35p | 2026-10-26 | [Browse](docs/states/telangana/README.md) |
 | [Unspecified](docs/states/unspecified/README.md) | 1 | 1 | 1c | 2026-10-26 | [Browse](docs/states/unspecified/README.md) |
-| [Uttar Pradesh](docs/states/uttar-pradesh/README.md) | 138 | 56 | 138c | 2026-10-26 | [Browse](docs/states/uttar-pradesh/README.md) |
+| [Uttar Pradesh](docs/states/uttar-pradesh/README.md) | 139 | 56 | 139c | 2026-10-26 | [Browse](docs/states/uttar-pradesh/README.md) |
 | [Uttarakhand](docs/states/uttarakhand/README.md) | 28 | 8 | 13c / 15p | 2026-10-26 | [Browse](docs/states/uttarakhand/README.md) |
 | [West Bengal](docs/states/west-bengal/README.md) | 32 | 20 | 31c / 1p | 2026-10-26 | [Browse](docs/states/west-bengal/README.md) |
 <!-- STATE_TABLE:END -->

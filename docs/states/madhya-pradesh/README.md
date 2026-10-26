@@ -1,8 +1,8 @@
 # Toll plazas in Madhya Pradesh — India
 
-Browse **110 FASTag toll plazas** across 54 national highways in Madhya Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **109 FASTag toll plazas** across 53 national highways in Madhya Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 110 complete · **Last updated:** 2026-10-26
+**Coverage:** 109 complete · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,7 +17,7 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 110 | 100.0% |
+| complete | 109 | 100.0% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -58,7 +58,6 @@ What "confidence" means, so you know how much to trust a given rate:
 | Raksha Toll Plaza | 27 | Karanja (Ghadge),District Wardha,Maharashtra 442203 | [25.461841, 78.451052](https://www.google.com/maps?q=25.461841,78.451052) | 140 | complete |
 | Ramnagar Toll Plaza |  27 | Karanja (Ghadge),District Wardha,Maharashtra 442203 | [25.2790238, 77.6132342](https://www.google.com/maps?q=25.2790238,77.6132342) | 110 | complete |
 | Saliwada Toll Plaza | 30 | 13.44 | [23.1047992, 80.0299399](https://www.google.com/maps?q=23.1047992,80.0299399) | 35 | complete |
-| Baiji Toll Plaza | 30  (NH-12A) | 200.100 | [21.771229, 81.502337](https://www.google.com/maps?q=21.771229,81.502337) | 65 | complete |
 | Pandutala Toll Plaza | 30 | Bajheri Village  | [22.3906876, 80.8075934](https://www.google.com/maps?q=22.3906876,80.8075934) | 95 | complete |
 | Boharipar/Bahoripar (Khursi)  Fee Plaza | 30 &amp; 34 | Km 481.385 | [23.046977, 79.907464](https://www.google.com/maps?q=23.046977,79.907464) | 170 | complete |
 | Mohtara Toll Plaza | 30 | VillageMohtara TehsilSihora Distt. Jabalpur | [23.4335191, 80.0872809](https://www.google.com/maps?q=23.4335191,80.0872809) | 130 | complete |

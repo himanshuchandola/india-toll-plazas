@@ -1,8 +1,8 @@
 # Toll plazas in Delhi — India
 
-Browse **21 FASTag toll plazas** across 11 national highways in Delhi. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **19 FASTag toll plazas** across 10 national highways in Delhi. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 21 complete · **Last updated:** 2026-10-26
+**Coverage:** 19 complete · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,7 +17,7 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 21 | 100.0% |
+| complete | 19 | 100.0% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -40,8 +40,6 @@ What "confidence" means, so you know how much to trust a given rate:
 | Indirapuram (DME Close Loop Toll) | 334 |  | [28.632236 ,  77.344611](https://www.google.com/maps?q=28.632236 , 77.344611) |  | complete |
 | Dundahera Plaza (DME Close Loop Toll) | 334 |  | [28.635887 , 77.444447](https://www.google.com/maps?q=28.635887 ,77.444447) |  | complete |
 | Mundka-Bakkarwala Toll Plaza | 344M | MPD Gate No-9 Vasco Da Gama | [28.67304996, 77.01122001](https://www.google.com/maps?q=28.67304996,77.01122001) | 230 | complete |
-| Rasoolpur (DME Close Loop Toll) | NE II | Km 31.343 | [28.707, 77.517](https://www.google.com/maps?q=28.707,77.517) | 0 | complete |
-| Chhajju Nagar(EPE) Close Loop Toll | NE II | Km 132.085 | [28.09952, 77.36404](https://www.google.com/maps?q=28.09952,77.36404) | 0 | complete |
 
 ---
 

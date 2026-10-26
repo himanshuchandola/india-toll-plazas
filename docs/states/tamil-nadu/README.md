@@ -1,8 +1,8 @@
 # Toll plazas in Tamil Nadu — India
 
-Browse **108 FASTag toll plazas** across 41 national highways in Tamil Nadu. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **107 FASTag toll plazas** across 40 national highways in Tamil Nadu. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 85 complete, 23 partial · **Last updated:** 2026-10-26
+**Coverage:** 84 complete, 23 partial · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,8 +17,8 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 85 | 78.7% |
-| partial | 23 | 21.3% |
+| complete | 84 | 78.5% |
+| partial | 23 | 21.5% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -79,7 +79,6 @@ What "confidence" means, so you know how much to trust a given rate:
 | Bogalur | 87 | 98.129 | [9.398195, 78.71394](https://www.google.com/maps?q=9.398195,78.71394) | 90 | complete |
 | Thiruppachethi | 87 | Km. 30.188 | [9.780999, 78.335299](https://www.google.com/maps?q=9.780999,78.335299) | 95 | complete |
 | Pudukottai (Vagaikulam) | 138 | Km 17.000 | [8.755472, 78.065264](https://www.google.com/maps?q=8.755472,78.065264) | 85 | complete |
-| Sameerapalem Toll Plaza | 167B | Sameerapalem(V), Voletivaripalem (M), SPSR Nellore District | [15.103900, 79.463900](https://www.google.com/maps?q=15.103900,79.463900) | 50 | complete |
 | H.Pudhupatti | 179 A | 39.76 | [11.96768, 78.42593](https://www.google.com/maps?q=11.96768,78.42593) | 95 | complete |
 | Kadhavani Toll Plaza | 179A | Jamni, Dist Jind | [12.375194 ,  78.545639](https://www.google.com/maps?q=12.375194 , 78.545639) | 70 | complete |
 | Sevugampatti Toll Plaza | 183 | 27+900 | [10.193994 ,  77.794270](https://www.google.com/maps?q=10.193994 , 77.794270) | 85 | complete |

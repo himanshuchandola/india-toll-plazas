@@ -1,8 +1,8 @@
 # Toll plazas in Uttar Pradesh — India
 
-Browse **138 FASTag toll plazas** across 56 national highways in Uttar Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **139 FASTag toll plazas** across 56 national highways in Uttar Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 138 complete · **Last updated:** 2026-10-26
+**Coverage:** 139 complete · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,7 +17,7 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 138 | 100.0% |
+| complete | 139 | 100.0% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -155,6 +155,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Bilakbarpur (EPE Close Loop Toll) | NE II | Km 72.724 | [28.52294, 77.59598](https://www.google.com/maps?q=28.52294,77.59598) | 0 | complete |
 | Fatehpur Rampur (EPE Close Loop Toll) | NE II | Km 83.005 | [28.43818, 77.58719](https://www.google.com/maps?q=28.43818,77.58719) | 0 | complete |
 | Maujpur (EPE Close Loop Toll) | NE II | Km 108.570 | [28.2810361, 77.4389116](https://www.google.com/maps?q=28.2810361,77.4389116) | 0 | complete |
+| Rasoolpur (DME Close Loop Toll) | NE II | Km 31.343 | [28.707, 77.517](https://www.google.com/maps?q=28.707,77.517) | 0 | complete |
 | Badagaon (EPE Close Loop Toll) | NE II |  | [28.86933846808413 ,  77.32394926295241](https://www.google.com/maps?q=28.86933846808413 , 77.32394926295241) |  | complete |
 | Bautha Toll Plaza |  |  | [27.982242, 80.659293](https://www.google.com/maps?q=27.982242,80.659293) | 50 | complete |
 | Kudaiya Toll Plaza |  |  | [27.816366, 79.669052](https://www.google.com/maps?q=27.816366,79.669052) | 60 | complete |

@@ -1,6 +1,6 @@
 # Toll plazas in Andhra Pradesh — India
 
-Browse **111 FASTag toll plazas** across 40 national highways in Andhra Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **111 FASTag toll plazas** across 39 national highways in Andhra Pradesh. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
 **Coverage:** 102 complete, 9 partial · **Last updated:** 2026-10-26
 
@@ -81,6 +81,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Kothapalli | 167B | MPD Gate No-9 Vasco Da Gama | [15.09369641012573,  79.16530395133555](https://www.google.com/maps?q=15.09369641012573, 79.16530395133555) | 40 | complete |
 | Paluvai | 167AD | MPD Gate No-9 Vasco Da Gama | [16.533920, 79.510770](https://www.google.com/maps?q=16.533920,79.510770) | 50 | complete |
 | Peddakonduru | 167BG | Peddakonduru | [14.826982469247136, 79.7247835889564](https://www.google.com/maps?q=14.826982469247136,79.7247835889564) | 75 | complete |
+| Sameerapalem Toll Plaza | 167B | Sameerapalem(V), Voletivaripalem (M), SPSR Nellore District | [15.103900, 79.463900](https://www.google.com/maps?q=15.103900,79.463900) | 50 | complete |
 | Upputuru Toll Plaza | 167C | Upputuru | [15.934849, 80.290413](https://www.google.com/maps?q=15.934849,80.290413) | 105 | complete |
 | Seetharampuram |  216 |  (Ch-92+000) | [16.42327, 81.6388](https://www.google.com/maps?q=16.42327,81.6388) | 65 | complete |
 | Chinaganjam Toll Plaza | 216 | 187 | [15.6834263, 80.1917229](https://www.google.com/maps?q=15.6834263,80.1917229) | 75 | complete |
@@ -97,7 +98,6 @@ What "confidence" means, so you know how much to trust a given rate:
 | R Kothapalli  | 340B | Kothapalli village of Bathemcharla | [15.387436, 78.053719](https://www.google.com/maps?q=15.387436,78.053719) | 40 | complete |
 | Mudiveedu | 340 | Mudiveedu Fee Plaza at Km 50.050 | [13.698528, 78.518474](https://www.google.com/maps?q=13.698528,78.518474) | 70 | complete |
 | Sarandi Toll Plaza | 363 | SARANDI | [19.4514954, 79.3150454](https://www.google.com/maps?q=19.4514954,79.3150454) | 95 | complete |
-| Singarenipalli | 365 BB | KM 37.400 | [17.191787, 79.871305](https://www.google.com/maps?q=17.191787,79.871305) | 125 | complete |
 | Painampalli Khalu | 365A | Painampalli | [17.072777, 80.038874](https://www.google.com/maps?q=17.072777,80.038874) | 70 | complete |
 | Gantyada | 516E | At Km 20.650 of NH 516 E | [18.1458333, 83.2836111](https://www.google.com/maps?q=18.1458333,83.2836111) | 25 | complete |
 | Goshtani | 516 C | KM 0.00 For a length of 10.336km On NH16 | [17.71389, 83.212158](https://www.google.com/maps?q=17.71389,83.212158) | 12 | complete |

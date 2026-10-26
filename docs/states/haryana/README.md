@@ -1,8 +1,8 @@
 # Toll plazas in Haryana — India
 
-Browse **87 FASTag toll plazas** across 27 national highways in Haryana. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
+Browse **88 FASTag toll plazas** across 28 national highways in Haryana. Data sourced from [NHAI RajMargyatra](https://rajmargyatra.nhai.gov.in) and curated state sources.
 
-**Coverage:** 71 complete, 16 partial · **Last updated:** 2026-10-26
+**Coverage:** 72 complete, 16 partial · **Last updated:** 2026-10-26
 
 [← All states](../../README.md) · [Download full dataset](../../../data/latest.json)
 
@@ -17,8 +17,8 @@ What "confidence" means, so you know how much to trust a given rate:
 
 | Confidence | Plazas | Share |
 |---|---|---|
-| complete | 71 | 81.6% |
-| partial | 16 | 18.4% |
+| complete | 72 | 81.8% |
+| partial | 16 | 18.2% |
 
 | Toll Plaza | NH | Location | Coordinates | Car (single ₹) | Confidence |
 |---|---|---|---|---|---|
@@ -46,19 +46,18 @@ What "confidence" means, so you know how much to trust a given rate:
 | Narwana |   52 152 | 36.776 | [29.578554, 76.088477](https://www.google.com/maps?q=29.578554,76.088477) | 95 | complete |
 | Badopatti |   52 152 | 87 | [29.299265, 75.819918](https://www.google.com/maps?q=29.299265,75.819918) | 130 | complete |
 | Khatkar |   52 352 | km. 286.125 (Near Village Khatkar) | [29.394776, 76.252134](https://www.google.com/maps?q=29.394776,76.252134) | 125 | complete |
-| Shergarh (Close Loop Toll  ) | 54 | 27+900 | [29.906346, 74.652422](https://www.google.com/maps?q=29.906346,74.652422) | 0 | complete |
 | Abubshahar (Close Loop Toll  ) | 54 | 27+900 | [29.830945, 74.582024](https://www.google.com/maps?q=29.830945,74.582024) | 0 | complete |
 | Alika (Close Loop Toll  ) | 54 | 27+900 | [29.920923, 74.726776](https://www.google.com/maps?q=29.920923,74.726776) | 0 | complete |
 | Chautala (Close Loop Toll  ) | 54 | 27+900 | [29.787100, 74.517432](https://www.google.com/maps?q=29.787100,74.517432) | 0 | complete |
 | Dabwali (Close Loop Toll  ) | 54 | 27+900 | [29.940235, 74.750839](https://www.google.com/maps?q=29.940235,74.750839) | 0 | complete |
 | Jogewala (Close Loop Toll ) | 54 | 27+900 | [29.965057, 74.751886](https://www.google.com/maps?q=29.965057,74.751886) | 0 | complete |
+| Shergarh (Close Loop Toll  ) | 54 | 27+900 | [29.906346, 74.652422](https://www.google.com/maps?q=29.906346,74.652422) | 0 | complete |
 | Thana | 65 (New 152) | At Km 68.680 design chainage (existing chainage at km. 64.000) | [29.91029, 76.50666](https://www.google.com/maps?q=29.91029,76.50666) | 90 | complete |
 | Dighal | 71 (New 352) |  Near Mampuzha Bridge,Pantheerankaavu at Km.250+300 | [28.776746, 76.621688](https://www.google.com/maps?q=28.776746,76.621688) | 60 | complete |
 | Gangaycha Jatt | 71 (New 352) | Km 430.000 | [28.275006, 76.613363](https://www.google.com/maps?q=28.275006,76.613363) | 100 | complete |
 | Banaundi  | 72 | MPD Gate No-9 Vasco Da Gama | [30.449309, 77.072417](https://www.google.com/maps?q=30.449309,77.072417) | 60 | complete |
 | Jalouli |  73 | 158.579 | [30.585731, 76.945274](https://www.google.com/maps?q=30.585731,76.945274) | 120 | complete |
 | Bhago Majra |  95 | 12.07 | [30.7609536, 76.6078459](https://www.google.com/maps?q=30.7609536,76.6078459) | 115 | complete |
-| Ghulal |  95 | 60 | [30.84737, 76.13282](https://www.google.com/maps?q=30.84737,76.13282) | 115 | complete |
 | Bawani Khera | 148B |  | [28.980313, 76.017813](https://www.google.com/maps?q=28.980313,76.017813) | 70 | complete |
 | Kitlana | 148B | Km 94.600 to Km 125.920 | [28.69299, 76.158534](https://www.google.com/maps?q=28.69299,76.158534) | 50 | complete |
 | Chabri Toll Plaza (Close Loop Toll ) | 152D |  | [29.197681 ,  76.469761](https://www.google.com/maps?q=29.197681 , 76.469761) | 0 | complete |
@@ -83,6 +82,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Jharoti | 334 B | jharothi | [28.921999, 76.953192](https://www.google.com/maps?q=28.921999,76.953192) | 85 | complete |
 | Morwala | 334B | Km. 32.460 | [28.641001, 76.381516](https://www.google.com/maps?q=28.641001,76.381516) | 55 | complete |
 | Jhinjholi Toll Plaza | 344P | Km 9+550 (Jhinjholi Village-Haryana) | [28.850034, 77.018906](https://www.google.com/maps?q=28.850034,77.018906) | 70 | complete |
+| Chandi Toll Plaza | 352 |  | [29.007097, 76.508305](https://www.google.com/maps?q=29.007097,76.508305) | 90 | complete |
 | Mohana Toll Plaza | 352A | Km 1+110 of NH-166S near  Sukekulan village in North Goa  District of Goa  | [29.04000000, 76.87444444](https://www.google.com/maps?q=29.04000000,76.87444444) | 75 | complete |
 | Bartana | 352A | Km 9+550 (Jhinjholi Village-Haryana) | [29.162500, 76.284900](https://www.google.com/maps?q=29.162500,76.284900) | 70 | complete |
 | Peont | 709A | 97+200 | [29.624188, 76.786401](https://www.google.com/maps?q=29.624188,76.786401) | 80 | complete |
@@ -93,6 +93,7 @@ What "confidence" means, so you know how much to trust a given rate:
 | Tamsabad | 709AD | Moradabad | [29.390801, 77.135678](https://www.google.com/maps?q=29.390801,77.135678) | 75 | complete |
 | Pelak (EPE Close Loop Toll) | NE II |  | [28.127789 ,  77.406093](https://www.google.com/maps?q=28.127789 , 77.406093) |  | complete |
 | Gulzarpur (Close Loop Toll) |  |  | [29.846186, 76.170343](https://www.google.com/maps?q=29.846186,76.170343) | 0 | complete |
+| Chhajju Nagar(EPE) Close Loop Toll | NE II | Km 132.085 | [28.09952, 77.36404](https://www.google.com/maps?q=28.09952,77.36404) | 0 | complete |
 | Kundali |  | NETC 312036; Kundali; Kundali, Haryana; 28.911104,77.025054 | [28.911104, 77.025054](https://www.google.com/maps?q=28.911104,77.025054) | 35 | partial |
 | Kharkhoda |  | NETC 312037; Kharkhoda; Kharkhoda, Haryana; 28.858488,76.946385 | [28.858488, 76.946385](https://www.google.com/maps?q=28.858488,76.946385) | 10 | partial |
 | Asoda |  | NETC 312038; Asoda; Asoda, Haryana; 28.725089,76.846528 | [28.725089, 76.846528](https://www.google.com/maps?q=28.725089,76.846528) | 60 | partial |
